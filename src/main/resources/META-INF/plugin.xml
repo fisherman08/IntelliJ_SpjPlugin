@@ -1,0 +1,125 @@
+<idea-plugin version="2">
+    <id>com.ky-proj.spjplugin</id>
+    <name>Spj Plugin</name>
+    <version>1.1.0</version>
+    <vendor url="https://github.com/fisherman08/IntelliJ_SpjPlugin">Y.Kaneko</vendor>
+
+    <description><![CDATA[
+      <h2>Custom language plugin for 101NEO framework.</h2><br>
+
+      This plugin is the most sophisticated environment for developing 101NEO framework.<br><br>
+      Functions:
+      <ul>
+        <li>Completion and Annotations depending on Neo version and .prj settings</li>
+        <li>Syntax highlights</li>
+        <li>Changing highlight color settings</li>
+        <li>basic code formatting and indent</li>
+        <li>Structure view</li>
+      </ul>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      (2017/05/25) v1.1.0: Support "try" blocks of Neo4.<br/>
+      (2017/05/07) v1.0.6: Add some annotations.<br/>
+      (2017/04/03) v1.0.5: Add Completion for SpjDocs.<br/>
+      (2017/03/23) v1.0.4: Support IDEA 2017.1.<br/>
+      (2017/03/22) v1.0.3: Fixed some bugs.<br/>
+      (2017/03/21) v1.0.1: Fixed some bugs.<br/>
+      (2016/03/20) v1.0.0: Support Neo4. Support Preferences to specify Neo version and .prj file for the project.<br/>
+      (2016/10/28) v0.6.2: Fixed some bugs.<br/>
+      (2016/08/25) v0.6.1: Support SpjDocs at the head of procedure blocks.<br/>
+      (2016/08/06) v0.5.7: Add support for new built-in functions. Fixed some bugs.<br/>
+      (2016/08/01) v0.5.6: Fixed some bugs.<br/>
+      (2016/07/28) v0.5.5: Fixed some bugs.<br/>
+      (2016/07/27) v0.5.4: Add folding support for.procedure blocks<br/>
+      (2016/07/26) v0.5.3: Fixed some bugs.<br/>
+      (2016/07/12) v0.5.2: Fixed some bugs.<br/>
+      (2016/07/08) v0.5.1: Add "Find Usage" for procedures and Commenter.<br/>
+      (2016/07/08) v0.5.0: Add "Go To Declaration" for calling procedures.<br/>
+      (2016/06/22) v0.4.5: Add support for new libraries(hash, csv, json).<br/>
+      (2016/02/26) v0.4.4: Fixed some bugs.<br/>
+      (2016/02/10) v0.4.3: Fixed some bugs.<br/>
+      (2015/12/16) v0.4.2: Fixed some bugs.<br/>
+      (2015/12/10) v0.4.1: Fixed some bugs.<br/>
+      (2015/12/10) v0.4.0: Add auto completion for variables and arguments in the same file<br/>
+      (2015/11/24) v0.3.3: Fixed some bugs.<br/>
+      (2015/11/21) v0.3.2: Fixed some bugs. Add annotation on calling undefined procedures<br/>
+      (2015/11/19) v0.3.1: Fixed some bugs<br/>
+      (2015/11/17) v0.3.0: Structure View and auto completion for user-defined procedures<br/>
+      (2015/11/16) v0.2.1: Bug fix & add support for new built-in functions<br/>
+      (2015/11/15) v0.2.0: Auto Completion support for built-in commands and functions<br/>
+      (2015/11/01) v0.1.0: first release<br/>
+    ]]>
+    </change-notes>
+
+    <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="171"/>
+
+    <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+
+    <depends>com.intellij.modules.lang</depends>
+
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <!--<fileTypeFactory implementation="com.ky_proj.spjplugin.SpjFileTypeFactory"/>-->
+        <!--<lang.parserDefinition language="spj" implementationClass="com.ky_proj.spjplugin.SpjParserDefinition"/>-->
+        <!--<lang.syntaxHighlighterFactory language="spj" implementationClass="com.ky_proj.spjplugin.SpjSyntaxHighlighterFactory"/>-->
+        <!--<colorSettingsPage implementation="com.ky_proj.spjplugin.SpjColorSettingsPage"/>-->
+
+        <!--<lang.braceMatcher language="spj" implementationClass="com.ky_proj.spjplugin.highlight.SpjBraceMatcher"/>-->
+
+        <!--<problemFileHighlightFilter implementation="com.ky_proj.spjplugin.highlight.SpjProblemFileHighlightFilter"/>-->
+
+        <!--<codeStyleSettingsProvider implementation="com.ky_proj.spjplugin.SpjCodeStyleSettingsProvider"/>-->
+        <!--<langCodeStyleSettingsProvider implementation="com.ky_proj.spjplugin.SpjLanguageCodeStyleSettingsProvider"/>-->
+        <!--<lang.formatter language="spj" implementationClass="com.ky_proj.spjplugin.formatter.SpjFormattingModelBuilder"/>-->
+
+        <!--<completion.contributor language="spj"-->
+                                <!--implementationClass="com.ky_proj.spjplugin.completion.SpjCompletionContributor"/>-->
+
+        <!--<lang.psiStructureViewFactory language="spj" implementationClass="com.ky_proj.spjplugin.structure.SpjStructureViewFactory"/>-->
+
+        <!--<annotator language="spj" implementationClass="com.ky_proj.spjplugin.annotator.SpjAnnotator"/>-->
+
+        <!--<lang.findUsagesProvider language="spj" implementationClass="com.ky_proj.spjplugin.findusage.SpjFindUsagesProvider"/>-->
+
+        <!--<lang.commenter language="spj" implementationClass="com.ky_proj.spjplugin.commenter.SpjCommenter"/>-->
+
+        <!--<lang.foldingBuilder language="spj" implementationClass="com.ky_proj.spjplugin.folding.SpjFoldingBuilder"/>-->
+
+        <!--&lt;!&ndash;live template&ndash;&gt;-->
+        <!--<defaultLiveTemplatesProvider implementation="com.ky_proj.spjplugin.template.SpjTemplateProvider"/>-->
+        <!--<liveTemplateContext implementation="com.ky_proj.spjplugin.template.SpjTemplateContextType"/>-->
+
+        <!--&lt;!&ndash;color default&ndash;&gt;-->
+        <!--<additionalTextAttributes scheme="Darcula" file="colorSchemes/SpjDarcula.xml"/>-->
+
+
+        <!--&lt;!&ndash;below are prj file configurations&ndash;&gt;-->
+        <!--<fileTypeFactory implementation="com.ky_proj.spjplugin.NeoPrjFile.NeoPrjFileFileTypeFactory"/>-->
+        <!--<lang.parserDefinition language="prj" implementationClass="com.ky_proj.spjplugin.NeoPrjFile.NeoPrjFileParserDefinition"/>-->
+        <!--<lang.syntaxHighlighterFactory language="prj" implementationClass="com.ky_proj.spjplugin.NeoPrjFile.NeoPrjFileSyntaxHighlighterFactory"/>-->
+
+        <!--&lt;!&ndash; project settings &ndash;&gt;-->
+        <!--<projectConfigurable groupId="language" instance="com.ky_proj.spjplugin.settings.SpjSettingsConfigurable"/>-->
+    </extensions>
+
+
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+        <!--<component>-->
+            <!--<implementation-class>com.ky_proj.spjplugin.SpjProjectComponent</implementation-class>-->
+        <!--</component>-->
+    </project-components>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+
+</idea-plugin>

@@ -1,0 +1,68 @@
+buildscript {
+    ext.kotlin_version = '1.2.10'
+
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        maven {
+            url 'http://dl.bintray.com/jetbrains/intellij-plugin-service'
+        }
+
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "gradle.plugin.org.jetbrains:gradle-intellij-plugin:0.1.10"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'org.jetbrains.intellij'
+
+sourceCompatibility = 1.8
+group 'com.ky-proj.spjplugin'
+version '1.5.0-beta'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    testCompile 'junit:junit:4.+'
+    }
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.suppressWarnings = true
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.suppressWarnings = true
+}
+
+
+intellij {
+    version '2017.1'
+    pluginName "spjplugin"
+}
+
+sourceSets {
+    main {
+        java { srcDir 'src/main/gen' }
+    }
+
+    test {
+        java { srcDir 'src/main/gen' }
+    }
+}
+
+jar {
+    archiveName "${baseName}-${version}.${extension}"
+    destinationDir file("release")
+
+}
+

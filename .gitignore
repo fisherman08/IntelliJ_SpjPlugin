@@ -1,0 +1,14 @@
+*~
+.DS_Store
+.idea
+*.iml
+local.properties
+
+.gradle/
+
+
+build
+out
+
+jflex*.jar
+idea-flex.skeleton
