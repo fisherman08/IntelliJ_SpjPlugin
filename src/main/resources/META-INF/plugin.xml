@@ -63,7 +63,8 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <!--<fileTypeFactory implementation="com.ky_proj.spjplugin.SpjFileTypeFactory"/>-->
+        <fileTypeFactory implementation="com.ky_proj.spjplugin.filetype.SpjFileTypeFactory"/>
+
         <!--<lang.parserDefinition language="spj" implementationClass="com.ky_proj.spjplugin.SpjParserDefinition"/>-->
         <!--<lang.syntaxHighlighterFactory language="spj" implementationClass="com.ky_proj.spjplugin.SpjSyntaxHighlighterFactory"/>-->
         <!--<colorSettingsPage implementation="com.ky_proj.spjplugin.SpjColorSettingsPage"/>-->
