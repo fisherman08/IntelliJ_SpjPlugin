@@ -72,7 +72,7 @@
         <!--color default-->
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/SpjDarcula.xml"/>
 
-        <!--<lang.braceMatcher language="spj" implementationClass="com.ky_proj.spjplugin.highlight.SpjBraceMatcher"/>-->
+        <lang.braceMatcher language="spj" implementationClass="com.ky_proj.spjplugin.completion.SpjBraceMatcher"/>
 
         <!--<problemFileHighlightFilter implementation="com.ky_proj.spjplugin.highlight.SpjProblemFileHighlightFilter"/>-->
 
@@ -80,8 +80,8 @@
         <!--<langCodeStyleSettingsProvider implementation="com.ky_proj.spjplugin.SpjLanguageCodeStyleSettingsProvider"/>-->
         <!--<lang.formatter language="spj" implementationClass="com.ky_proj.spjplugin.formatter.SpjFormattingModelBuilder"/>-->
 
-        <!--<completion.contributor language="spj"-->
-                                <!--implementationClass="com.ky_proj.spjplugin.completion.SpjCompletionContributor"/>-->
+        <completion.contributor language="spj"
+                                implementationClass="com.ky_proj.spjplugin.completion.SpjCompletionContributor"/>
 
         <!--<lang.psiStructureViewFactory language="spj" implementationClass="com.ky_proj.spjplugin.structure.SpjStructureViewFactory"/>-->
 
