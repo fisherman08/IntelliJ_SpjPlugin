@@ -47,7 +47,7 @@ compileTestKotlin {
 
 intellij {
     version '2017.1'
-    pluginName "spjplugin"
+    pluginName "Intellij_SpjPlugin"
 }
 
 sourceSets {

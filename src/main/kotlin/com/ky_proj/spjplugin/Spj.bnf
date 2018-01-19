@@ -1,0 +1,69 @@
+{
+  parserClass="com.ky_proj.spjplugin.parser.SpjParser"
+
+  extends="com.ky_proj.spjplugin.psi.impl.SpjNamedElementImpl"
+  //extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Spj"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.ky_proj.spjplugin.psi"
+  psiImplPackage="com.ky_proj.spjplugin.psi.impl"
+
+  elementTypeHolderClass="com.ky_proj.spjplugin.psi.SpjTypes"
+  elementTypeClass="com.ky_proj.spjplugin.psi.SpjElementType"
+  tokenTypeClass="com.ky_proj.spjplugin.psi.SpjTokenType"
+}
+
+spjFile ::= item_*
+
+
+private common_item ::=SEPARATOR|COMMENT|doc_comment_row|STRING|
+                       LPAR|RPAR|LPARC|RPARC|
+                       OPER|ORAND|
+                       COMMA|
+                       PROCEDURE|
+                       KEYWORD|
+                       RETURN|
+                       CATCH|
+                       IMPORT|FUNCTION|NUMBER|
+                       proc_call|com_call|vars|args|CRLF|DUMMY|BAD_CHARACTER
+
+private item_ ::= (procedure_block|item_p)
+
+private item_p ::= (arguments|calling_function|condition|ifblock|common_item|forblock|whileblock|elseifstate|tryblock|exceptblock|calling_procedure|calling_command|
+                                        IF|ELSE|ENDIF|THEN|FOR|ENDFOR|WHILE|ENDWHILE|CATCH|ELSEIF|PERFORM|CALL|FUNCTION|TRY|EXCEPT|FINALLY|ENDTRY)
+procedure_block ::= procedure_def (item_p)* {pin=1}
+
+private inside_block ::= (arguments|calling_function|condition|ifblock|common_item|forblock|whileblock|elseifstate|calling_procedure|calling_command|tryblock|exceptblock|ELSE|IF|ELSEIF|THEN)
+
+arguments ::= LPAR ((inside_arguments)|(inside_condition))* RPAR {pin=1}
+private inside_arguments ::= args|COMMENT|STRING|NUMBER|CRLF|COMMA|BAD_CHARACTER|calling_function|arguments
+
+condition ::= LPARC (inside_condition)+ RPARC {pin=1}
+private inside_condition ::= (condition)|vars|COMMENT|ARGUMENT|NUMBER|STRING|CRLF|OPER|ORAND|BAD_CHARACTER|calling_function
+
+procedure_def ::= LBLO PROCEDURE (arguments)* RBLO
+
+calling_procedure ::= PERFORM proc_call arguments {pin=0}
+calling_command ::= CALL com_call arguments {pin=0}
+calling_function ::= FUNCTION arguments {pin=0}
+
+// IDEAの不具合？で、何かの要素の子要素の時にこれらが補完されなくなるのでpin=0でラップする
+proc_call ::= PROCEDURE_CALL {pin=0}
+com_call ::= COMMAND_CALL {pin=0}
+vars ::= VARIABLE {pin=0}
+args  ::= ARGUMENT {pin=0}
+doc_com_tags ::= DOC_COMMENT_TAG{pin=0}
+
+ifblock ::= IF [THEN] (condition) inside_block* ((elseifstate) inside_block* (ENDIF)* )* (ELSE [THEN] inside_block*)* ENDIF {pin=1}
+
+elseifstate ::= ELSE ELSEIF  [THEN] (condition)+ {pin=2}
+
+forblock ::= FOR (arguments)+ (inside_block)* ENDFOR {pin=1}
+
+whileblock ::= WHILE (condition)+ (inside_block)* ENDWHILE {pin=1}
+
+tryblock ::= TRY (inside_block)* (exceptblock)* (inside_block)* [FINALLY] (inside_block)* ENDTRY {pin=1}
+exceptblock ::= EXCEPT (arguments)* {pin=1}
+
+doc_comment_row ::= DOC_COMMENT (doc_com_tags|DOC_COMMENT_VALUE|DOC_COMMENT_TEXT)*

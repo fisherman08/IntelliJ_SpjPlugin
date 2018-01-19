@@ -16,6 +16,6 @@ class SpjFileTypeTestCase: SpjTestCase(){
     @Test
     fun testFileTypeRecognition(){
         val file = getVirtualFile("sample.spj")
-        assertEquals(file?.fileType?.name ?: "", "Spj File")
+        assertEquals("Spj File", file.fileType.name)
     }
 }

@@ -1,0 +1,32 @@
+# I am your father.
+[reference]
+
+test = linefeed_tag($test)
+
+[init_page]
+## init page action
+
+perform init:start($id, (3.34 + 50))
+array.make() # comment after some expressions
+
+[init:start(id_in, number_in)]
+## @example perform init:start($id)
+## @param id_in ID passed as an argument
+
+local(var1, var2)
+
+call MakeArray(var1, "I have a bad feeling about this.")
+call Append()
+
+if($var2 == "") then
+    while(1 == 1)
+        put(var2, "May the Force be with you.")
+    endwhile
+else if (aaa) then
+
+else then
+    section(____i)
+    for(____i, 0, array.count(afafs))
+        return()
+    endfor
+endif

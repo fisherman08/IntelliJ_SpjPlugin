@@ -1,0 +1,13 @@
+if(aaa) then
+
+else then
+    if(bbb) then
+        if(ccc) then
+        endif
+        if(ddd) then
+            perform hoge()
+        endif
+    endif
+endif
+
+[hoge]

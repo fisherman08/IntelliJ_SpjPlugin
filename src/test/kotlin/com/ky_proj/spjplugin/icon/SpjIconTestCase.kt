@@ -10,8 +10,12 @@ import org.junit.Test
  */
 class SpjIconTestCase: SpjTestCase(){
 
+    override fun getTestDataPath(): String {
+        return "${this.baseDir}"
+    }
+
     @Test
     fun testSpjIcon(){
-        assertEquals(SpjIcon.FileName, "/icons/icon_spj.png")
+        assertEquals("/icons/icon_spj.png", SpjIcon.FileName)
     }
 }
