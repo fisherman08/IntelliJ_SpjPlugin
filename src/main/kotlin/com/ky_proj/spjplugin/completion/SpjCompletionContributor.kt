@@ -8,7 +8,12 @@ import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.codeInsight.lookup.LookupElementPresentation
+import com.intellij.ide.highlighter.JavaFileType
 import com.intellij.lang.ASTNode
+import com.intellij.lang.PsiBuilder
+import com.intellij.lang.PsiBuilderUtil
+import com.intellij.mock.MockFileManager
+import com.intellij.mock.MockPsiManager
 import com.intellij.openapi.components.BaseComponent
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.EditorModificationUtil
@@ -21,19 +26,18 @@ import com.intellij.openapi.util.objectTree.ObjectTree
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.patterns.PlatformPatterns
-import com.intellij.psi.PsiDocumentManager
-import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiFile
+import com.intellij.psi.*
+import com.intellij.psi.impl.PsiElementFactoryImpl
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.util.ProcessingContext
 import com.intellij.util.messages.MessageBus
+import com.ky_proj.spjplugin.completion.inserthandler.CommandInsertHandler
+import com.ky_proj.spjplugin.filetype.SpjFileType
 import com.ky_proj.spjplugin.icon.SpjIcon
 import com.ky_proj.spjplugin.language.SpjLanguage
-import com.ky_proj.spjplugin.psi.SpjArgs
-import com.ky_proj.spjplugin.psi.SpjProcedureBlock
-import com.ky_proj.spjplugin.psi.SpjProcedureDef
-import com.ky_proj.spjplugin.psi.SpjTypes
+import com.ky_proj.spjplugin.psi.*
+import com.ky_proj.spjplugin.psi.impl.SpjNamedElementImpl
 import com.ky_proj.spjplugin.psi.impl.SpjProcedureDefImpl
 import com.ky_proj.spjplugin.util.*
 import com.ky_proj.spjplugin.util.SpjUtil
@@ -42,47 +46,20 @@ import org.picocontainer.PicoContainer
 import java.util.ArrayList
 import java.util.Collections
 
-class SampleInsertHandler : InsertHandler<LookupElement>{
-
-    override fun handleInsert(context: InsertionContext, item: LookupElement) {
-        val editor = context.getEditor()
-        val completionChar = context.getCompletionChar()
-        EditorModificationUtil.insertStringAtCaret(editor, "unko")
-        editor.caretModel.moveToOffset(editor.caretModel.offset - 1)
-        /*if (completionChar == ' ' || StringUtil.containsChar(myIgnoreOnChars, completionChar)) return
-        val project = editor.project
-        if (project != null) {
-            if (!isCharAtSpace(editor)) {
-                EditorModificationUtil.insertStringAtCaret(editor, " ")
-                PsiDocumentManager.getInstance(project).commitDocument(editor.document)
-            } else if (shouldOverwriteExistingSpace(editor)) {
-                editor.caretModel.moveToOffset(editor.caretModel.offset + 1)
-            }
-            if (myTriggerAutoPopup) {
-                AutoPopupController.getInstance(project).autoPopupMemberLookup(editor, null)
-            }
-        }*/
-    }
-}
-
 class SpjCompletionContributor : CompletionContributor() {
 
-    /*override fun duringCompletion(context: CompletionInitializationContext) {
-        super.duringCompletion(context)
-        context.editor.caretModel.moveCaretRelatively(-1,
-                0,
-                false,
-                false,
-                true)
-    }*/
     init {
         // コマンド
         extend(CompletionType.BASIC,
                 PlatformPatterns.psiElement(SpjTypes.COMMAND_CALL).withLanguage(SpjLanguage.INSTANCE),
                 object : CompletionProvider<CompletionParameters>() {
                     public override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, resultSet: CompletionResultSet) {
-                        for (command in SpjUtil.GET_COMMANDS.list) {
-                            val element = LookupElementBuilder.create(command).withInsertHandler(SampleInsertHandler()).withTypeText("built in command", true).withIcon(SpjIcon.FILE)
+                        val list = SpjCommandProvider.list(parameters.originalFile.project)
+                        list.forEach { command ->
+                            val element = LookupElementBuilder.create(command, command.node.text)
+                                    .withTypeText("built in command", true)
+                                    .withInsertHandler(CommandInsertHandler())
+                                    .withIcon(SpjIcon.FILE)
                             resultSet.addElement(element)
                         }
                     }
@@ -96,10 +73,14 @@ class SpjCompletionContributor : CompletionContributor() {
                 object : CompletionProvider<CompletionParameters>() {
                     public override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, resultSet: CompletionResultSet) {
                         // 組み込み関数
-                       for (command in SpjUtil.GET_FUNCTIONS.list) {
-                            resultSet.addElement(LookupElementBuilder.create(command).withTypeText("built in function", true))
+                        val list = SpjFunctionProvider.list(parameters.originalFile.project)
+                        list.forEach { command ->
+                            val element = LookupElementBuilder.create(command, command.node.text)
+                                    .withTypeText("built in function", true)
+                                    .withInsertHandler(CommandInsertHandler())
+                                    .withIcon(SpjIcon.FILE)
+                            resultSet.addElement(element)
                         }
-
 //                        // 定義済みプロシージャ
 //                        if (SpjUtil.GET_SPJ_SETTING.isEnhanceMode(parameters.originalFile.project)) {
 //                            addProceduresToResultSet(resultSet, true)
