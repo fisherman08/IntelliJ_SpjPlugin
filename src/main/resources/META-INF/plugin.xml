@@ -65,11 +65,14 @@
         <!-- Add your extensions here -->
         <fileTypeFactory implementation="com.ky_proj.spjplugin.filetype.SpjFileTypeFactory"/>
 
-        <!--<lang.parserDefinition language="spj" implementationClass="com.ky_proj.spjplugin.SpjParserDefinition"/>-->
-        <!--<lang.syntaxHighlighterFactory language="spj" implementationClass="com.ky_proj.spjplugin.SpjSyntaxHighlighterFactory"/>-->
-        <!--<colorSettingsPage implementation="com.ky_proj.spjplugin.SpjColorSettingsPage"/>-->
+        <lang.parserDefinition language="spj" implementationClass="com.ky_proj.spjplugin.parser.SpjParserDefinition"/>
 
-        <!--<lang.braceMatcher language="spj" implementationClass="com.ky_proj.spjplugin.highlight.SpjBraceMatcher"/>-->
+        <lang.syntaxHighlighterFactory language="spj" implementationClass="com.ky_proj.spjplugin.syntaxhighlighter.SpjSyntaxHighlighterFactory"/>
+        <colorSettingsPage implementation="com.ky_proj.spjplugin.syntaxhighlighter.SpjColorSettingsPage"/>
+        <!--color default-->
+        <additionalTextAttributes scheme="Darcula" file="colorSchemes/SpjDarcula.xml"/>
+
+        <lang.braceMatcher language="spj" implementationClass="com.ky_proj.spjplugin.completion.SpjBraceMatcher"/>
 
         <!--<problemFileHighlightFilter implementation="com.ky_proj.spjplugin.highlight.SpjProblemFileHighlightFilter"/>-->
 
@@ -77,8 +80,8 @@
         <!--<langCodeStyleSettingsProvider implementation="com.ky_proj.spjplugin.SpjLanguageCodeStyleSettingsProvider"/>-->
         <!--<lang.formatter language="spj" implementationClass="com.ky_proj.spjplugin.formatter.SpjFormattingModelBuilder"/>-->
 
-        <!--<completion.contributor language="spj"-->
-                                <!--implementationClass="com.ky_proj.spjplugin.completion.SpjCompletionContributor"/>-->
+        <completion.contributor language="spj"
+                                implementationClass="com.ky_proj.spjplugin.completion.SpjCompletionContributor"/>
 
         <!--<lang.psiStructureViewFactory language="spj" implementationClass="com.ky_proj.spjplugin.structure.SpjStructureViewFactory"/>-->
 
@@ -94,8 +97,7 @@
         <!--<defaultLiveTemplatesProvider implementation="com.ky_proj.spjplugin.template.SpjTemplateProvider"/>-->
         <!--<liveTemplateContext implementation="com.ky_proj.spjplugin.template.SpjTemplateContextType"/>-->
 
-        <!--&lt;!&ndash;color default&ndash;&gt;-->
-        <!--<additionalTextAttributes scheme="Darcula" file="colorSchemes/SpjDarcula.xml"/>-->
+
 
 
         <!--&lt;!&ndash;below are prj file configurations&ndash;&gt;-->

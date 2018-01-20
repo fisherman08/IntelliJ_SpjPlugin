@@ -16,7 +16,7 @@ class SpjFileType private constructor() : LanguageFileType(SpjLanguage.INSTANCE)
     }
 
     override fun getDescription(): String {
-        return "101NEO Spj language file"
+        return "Spj language file"
     }
 
     override fun getDefaultExtension(): String {

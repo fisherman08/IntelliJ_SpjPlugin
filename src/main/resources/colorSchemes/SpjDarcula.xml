@@ -1,0 +1,75 @@
+<?xml version='1.0'?>
+<list>
+    <option name="SPJ_ARGUMENT">
+        <value>
+            <option name="FOREGROUND" value="ff6400" />
+        </value>
+    </option>
+    <option name="SPJ_COMMAND_CALL">
+        <value>
+            <option name="FOREGROUND" value="ffd734" />
+        </value>
+    </option>
+    <option name="SPJ_COMMENT">
+        <value>
+            <option name="FOREGROUND" value="aeaeae" />
+        </value>
+    </option>
+    <option name="SPJ_DOC_COMMENT">
+        <value>
+            <option name="FOREGROUND" value="519696" />
+        </value>
+    </option>
+    <option name="SPJ_DOC_COMMENT_TAG">
+        <value>
+            <option name="FOREGROUND" value="62acac" />
+            <option name="EFFECT_COLOR" value="287081" />
+            <option name="EFFECT_TYPE" value="4" />
+        </value>
+    </option>
+    <option name="SPJ_DOC_COMMENT_TEXT">
+        <value>
+            <option name="FOREGROUND" value="519696" />
+        </value>
+    </option>
+    <option name="SPJ_DOC_COMMENT_VALUE">
+        <value>
+            <option name="FOREGROUND" value="fd507a" />
+            <option name="FONT_TYPE" value="3" />
+        </value>
+    </option>
+    <option name="SPJ_KEYWORD">
+        <value>
+            <option name="FOREGROUND" value="fbde2d" />
+        </value>
+    </option>
+    <option name="SPJ_Oper">
+        <value>
+            <option name="FOREGROUND" value="fbb736" />
+        </value>
+    </option>
+    <option name="SPJ_PROCEDURE">
+        <value>
+            <option name="FOREGROUND" value="f49b20" />
+            <option name="EFFECT_COLOR" value="f49b20" />
+            <option name="EFFECT_TYPE" value="1" />
+        </value>
+    </option>
+    <option name="SPJ_PROCEDURE_CALL">
+        <value>
+            <option name="FOREGROUND" value="e4ff18" />
+            <option name="EFFECT_COLOR" value="ffff1e" />
+            <option name="EFFECT_TYPE" value="1" />
+        </value>
+    </option>
+    <option name="SPJ_String">
+        <value>
+            <option name="FOREGROUND" value="61ce3c" />
+        </value>
+    </option>
+    <option name="SPJ_VARIABLE">
+        <value>
+            <option name="FOREGROUND" value="ff6400" />
+        </value>
+    </option>
+</list>

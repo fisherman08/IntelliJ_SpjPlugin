@@ -18,6 +18,6 @@ class SpjLanguageTestCase: SpjTestCase(){
     @Test
     fun testSpjLanguage(){
         val file = getVirtualFile("sample.spj")
-        assertEquals((file?.fileType as SpjFileType).language.toString(), "Language: spj")
+        assertEquals("Language: spj", (file?.fileType as SpjFileType).language.toString())
     }
 }
