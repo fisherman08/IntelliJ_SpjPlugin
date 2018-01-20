@@ -39,5 +39,19 @@ class CompletionTestCase :SpjTestCase(){
         assertTrue(strings?.contains("array.make()") ?: false)
     }
 
+    @Test
+    fun testFunctionsAsArgument(){
+        val strings = getLookupElementStrings("/function_as_argument.spj")
+        assertNotEquals(0, strings?.size ?: 0)
+        assertTrue(strings?.contains("array.make()") ?: false)
+    }
+
+    @Test
+    fun testVariables(){
+        val strings = getLookupElementStrings("/variable.spj")
+        assertNotEquals(0, strings?.size ?: 0)
+        assertTrue(strings?.contains("\$stap") ?: false)
+        assertFalse(strings?.contains("\$stap_from_form") ?: true)
+    }
 
 }
