@@ -1,0 +1,5 @@
+local(stap)
+
+call ReplaceMarker(s<caret>)
+
+put(invalid, ?stap_from_form)
