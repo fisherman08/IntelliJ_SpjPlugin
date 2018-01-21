@@ -1,0 +1,7 @@
+
+
+[test:to_be_completed(arg1, arg2)]
+local(abc)
+
+[test:to_perform]
+perform te<caret>

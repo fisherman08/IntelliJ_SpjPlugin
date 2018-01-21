@@ -9,6 +9,7 @@ import com.intellij.patterns.PlatformPatterns
 import com.intellij.psi.tree.IElementType
 import com.intellij.util.ProcessingContext
 import com.ky_proj.spjplugin.completion.inserthandler.CommandInsertHandler
+import com.ky_proj.spjplugin.completion.inserthandler.ProcedureInsertHandler
 import com.ky_proj.spjplugin.icon.SpjIcon
 import com.ky_proj.spjplugin.language.SpjLanguage
 import com.ky_proj.spjplugin.psi.*
@@ -20,6 +21,7 @@ class SpjCompletionContributor : CompletionContributor() {
         指定されたタイプのcompletionにNeoの組み込み関数と、関数形式で呼び出せる定義済みプロシージャを加える
      */
     private fun addFunctions(elementtype :IElementType){
+        // neoの組み込み関数
         extend(CompletionType.BASIC,
                 PlatformPatterns.psiElement(elementtype).withLanguage(SpjLanguage.INSTANCE),
                 object : CompletionProvider<CompletionParameters>() {
@@ -40,6 +42,9 @@ class SpjCompletionContributor : CompletionContributor() {
                     }
                 }
         )
+
+        // returnを含む定義済みプロシージャ
+
     }
 
     private fun addVariablesAndArguments(type :IElementType){
@@ -57,6 +62,35 @@ class SpjCompletionContributor : CompletionContributor() {
                     }
                 }
         )
+
+    }
+
+    private fun addProcedures(type: IElementType, onlyWithReturn: Boolean) {
+
+        extend(CompletionType.BASIC,
+                PlatformPatterns.psiElement(type).withLanguage(SpjLanguage.INSTANCE),
+                object : CompletionProvider<CompletionParameters>() {
+                    public override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, resultSet: CompletionResultSet) {
+                        val procedures = SpjProcedureProvider.listInProject(parameters.originalFile.project, onlyWithReturn)
+
+                        for (procedure in procedures) {
+                            val body = procedure.node.findChildByType(SpjTypes.PROCEDURE)?.text ?: continue
+                            val arg = procedure.node.findChildByType(SpjTypes.ARGUMENTS)?.text ?: "()"
+                            val lookUpString = body + arg
+
+                            val element = LookupElementBuilder.create(procedure, lookUpString)
+                                    .withTypeText(procedure.containingFile.name, true)
+                                    .withInsertHandler(ProcedureInsertHandler())
+                                    .withIcon(SpjIcon.FILE)
+
+                            resultSet.addElement(element)
+
+                        }
+
+                    }
+                }
+        )
+
 
     }
 
@@ -87,25 +121,14 @@ class SpjCompletionContributor : CompletionContributor() {
         addFunctions(SpjTypes.FUNCTION)
         addVariablesAndArguments(SpjTypes.FUNCTION)
 
-
         // 引数
         addFunctions(SpjTypes.ARGUMENT)
         addVariablesAndArguments(SpjTypes.ARGUMENT)
 
-        /*
         // プロシージャ呼び出し
-        extend(CompletionType.BASIC,
-                PlatformPatterns.psiElement(SpjTypes.PROCEDURE_CALL).withLanguage(SpjLanguage.INSTANCE),
-                object : CompletionProvider<CompletionParameters>() {
-                    public override fun addCompletions(parameters: CompletionParameters,
-                                                       context: ProcessingContext,
-                                                       resultSet: CompletionResultSet) {
+        addProcedures(SpjTypes.PROCEDURE_CALL, false)
 
-                        addProceduresToResultSet(resultSet, false)
-                    }
-                }
-        )
-
+        /*
         // SpjDoc
         extend(CompletionType.BASIC,
                 PlatformPatterns.psiElement(SpjTypes.DOC_COMMENT_TAG).withLanguage(SpjLanguage.INSTANCE),
@@ -157,43 +180,4 @@ class SpjCompletionContributor : CompletionContributor() {
 
     }
 
-    /*
-    /**
-     * 定義済みのプロシージャを追加するやつ
-     * @param resultSet
-     */
-    private fun addProceduresToResultSet(resultSet: CompletionResultSet, is_only_with_return: Boolean?) {
-        val proc_defs: List<SpjProcedureDef>
-
-
-        proc_defs = SpjUtil.GET_PROCS.getProcDefs(myProject, is_only_with_return)
-
-        val neoDefault = SpjUtil.GET_PROCS.getNeoSysProcs()
-
-        for (i in proc_defs.indices) {
-            val nm: String
-            val proc = proc_defs[i]
-            val body = proc.node.findChildByType(SpjTypes.PROCEDURE)
-            val arg = proc.node.findChildByType(SpjTypes.ARGUMENTS)
-
-            if (arg != null && body != null) {
-                nm = body.text + arg.text
-            } else if (body != null) {
-                nm = body.text + "()"
-            } else {
-                continue
-            }
-
-            if (!neoDefault.contains(body.text)) {
-                // システムプロシージャは除外
-                resultSet.addElement(
-                        LookupElementBuilder.create(nm)
-                                .withTypeText(
-                                        proc.containingFile.name
-                                ).withInsertHandler { insertionContext, lookupElement -> }
-                )
-            }
-        }
-    }
-    */
 }
