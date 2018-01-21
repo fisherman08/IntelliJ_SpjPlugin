@@ -17,6 +17,6 @@ class CommandInsertHandler : InsertHandler<LookupElement> {
         val editor = context.editor
         val node = (item.`object` as PsiElement).node
         //EditorModificationUtil.insertStringAtCaret(editor, "insert")
-        editor.caretModel.moveToOffset(context.startOffset + node.firstChildNode.text.length + 1)
+        editor.caretModel.moveToOffset(context.startOffset + node.firstChildNode.text.length + "(".length)
     }
 }

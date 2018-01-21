@@ -5,6 +5,7 @@ package com.ky_proj.spjplugin.completion
  */
 import com.intellij.codeInsight.completion.CompletionType
 import com.ky_proj.spjplugin.SpjTestCase
+import com.ky_proj.spjplugin.util.SpjProcedureProvider
 import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Test
@@ -52,6 +53,19 @@ class CompletionTestCase :SpjTestCase(){
         assertNotEquals(0, strings?.size ?: 0)
         assertTrue(strings?.contains("\$stap") ?: false)
         assertFalse(strings?.contains("\$stap_from_form") ?: true)
+    }
+
+    @Test
+    fun testProcedure(){
+        val strings = getLookupElementStrings("/procedure.spj")
+        assertEquals(2, strings?.size ?: 0)
+    }
+
+    @Test
+    fun testSystemProceduresIgnored(){
+        myFixture.configureByFile("/procedure.system.spj")
+        val definitions = SpjProcedureProvider.listInProject(myFixture.project, false)
+        assertEquals(0, definitions.size)
     }
 
 }
