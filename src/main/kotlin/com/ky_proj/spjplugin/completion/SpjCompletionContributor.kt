@@ -35,15 +35,9 @@ class SpjCompletionContributor : CompletionContributor() {
                                     .withIcon(SpjIcon.FILE)
                             resultSet.addElement(element)
                         }
-//                        // 定義済みプロシージャ
-//                        if (SpjUtil.GET_SPJ_SETTING.isEnhanceMode(parameters.originalFile.project)) {
-//                            addProceduresToResultSet(resultSet, true)
-//                        }
                     }
                 }
         )
-
-        // returnを含む定義済みプロシージャ
 
     }
 
@@ -66,6 +60,8 @@ class SpjCompletionContributor : CompletionContributor() {
     }
 
     private fun addProcedures(type: IElementType, onlyWithReturn: Boolean) {
+
+        // TODO:: project.isEnhanceMode = falseの時に関数形式を無視する
 
         extend(CompletionType.BASIC,
                 PlatformPatterns.psiElement(type).withLanguage(SpjLanguage.INSTANCE),
@@ -116,14 +112,17 @@ class SpjCompletionContributor : CompletionContributor() {
         // 変数
         addFunctions(SpjTypes.VARIABLE)
         addVariablesAndArguments(SpjTypes.VARIABLE)
+        addProcedures(SpjTypes.VARIABLE, true)
 
         // 関数
         addFunctions(SpjTypes.FUNCTION)
         addVariablesAndArguments(SpjTypes.FUNCTION)
+        addProcedures(SpjTypes.FUNCTION, true)
 
         // 引数
         addFunctions(SpjTypes.ARGUMENT)
         addVariablesAndArguments(SpjTypes.ARGUMENT)
+        addProcedures(SpjTypes.ARGUMENT, true)
 
         // プロシージャ呼び出し
         addProcedures(SpjTypes.PROCEDURE_CALL, false)

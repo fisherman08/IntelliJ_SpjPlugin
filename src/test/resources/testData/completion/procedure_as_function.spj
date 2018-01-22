@@ -1,0 +1,11 @@
+
+
+[procedure_with_return]
+section(hoge)
+return($hoge)
+
+[procedure_without_return]
+section(fuga)
+
+
+result = pr<caret>
