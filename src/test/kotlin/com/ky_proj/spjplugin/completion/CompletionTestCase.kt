@@ -68,4 +68,13 @@ class CompletionTestCase :SpjTestCase(){
         assertEquals(0, definitions.size)
     }
 
+    @Test
+    fun testProcedureAsFunction(){
+        val strings = getLookupElementStrings("/procedure_as_function.spj")
+        assertNotEquals(0, strings?.size ?: 0)
+        assertTrue(strings?.contains("procedure_with_return()") ?: false)
+        assertFalse(strings?.contains("procedure_without_return()") ?: true)
+    }
+
+
 }
