@@ -65,5 +65,3 @@ jar {
     destinationDir file("release")
 
 }
-
-

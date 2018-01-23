@@ -76,5 +76,13 @@ class CompletionTestCase :SpjTestCase(){
         assertFalse(strings?.contains("procedure_without_return()") ?: true)
     }
 
+    @Test
+    fun testProcedureFromAnotherFile(){
+        myFixture.configureByFiles("/procedure.spj", "/procedure.anotherfile.spj" )
+        myFixture.complete(CompletionType.BASIC, 1)
+        val elements = myFixture.lookupElementStrings?.toTypedArray()
+        assertTrue(elements?.contains("test:from_another_file()") ?: false)
+    }
+
 
 }
