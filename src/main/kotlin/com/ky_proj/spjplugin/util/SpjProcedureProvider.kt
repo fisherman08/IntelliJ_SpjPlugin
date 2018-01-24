@@ -30,6 +30,13 @@ object SpjProcedureProvider {
             "action"
     )
 
+    /**
+     * projectを渡すと、プロジェクト内に存在する定義済みプロシージャをとにかく全部返してくれる
+     *
+     * @args project プロジェクトインスタンス
+     * @args is_only_return trueだとreturn句を含むプロシージャのみに限定
+     * @return ArrayList<SpjProcedureDef>
+     */
     fun listInProject(project : Project, is_only_return : Boolean) :ArrayList<SpjProcedureDef>{
         val definitions = ArrayList<SpjProcedureDef>()
         val virtualFiles = FileTypeIndex.getFiles(SpjFileType.INSTANCE, GlobalSearchScope.allScope(project))
