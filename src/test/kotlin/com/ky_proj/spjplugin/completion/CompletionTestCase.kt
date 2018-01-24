@@ -20,6 +20,10 @@ class CompletionTestCase :SpjTestCase(){
         super.setUp()
     }
 
+    /**
+     * サンプルSPJファイルの<caret>の位置でcompleteを実行し、補完候補をSTringの配列で返す。
+     * 補完候補が1つしかない場合はnullが返るので注意。
+     */
     private fun getLookupElementStrings(filename :String) :Array<String>? {
         myFixture.configureByFile(filename)
         myFixture.complete(CompletionType.BASIC, 1)
@@ -85,4 +89,12 @@ class CompletionTestCase :SpjTestCase(){
     }
 
 
+    @Test
+    fun testSpjDoc() {
+        val strings = getLookupElementStrings("/spjdoc.spj")
+        assertNotEquals(0, strings?.size ?: 0)
+        assertTrue(strings?.contains("@example perform spjdoctest(arg1, arg2)") ?: false)
+        assertTrue(strings?.contains("@param arg1 ") ?: false)
+        assertTrue(strings?.contains("@param arg2 ") ?: false)
+    }
 }
