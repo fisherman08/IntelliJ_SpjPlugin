@@ -83,7 +83,7 @@
         <completion.contributor language="spj"
                                 implementationClass="com.ky_proj.spjplugin.completion.SpjCompletionContributor"/>
 
-        <!--<lang.psiStructureViewFactory language="spj" implementationClass="com.ky_proj.spjplugin.structure.SpjStructureViewFactory"/>-->
+        <lang.psiStructureViewFactory language="spj" implementationClass="com.ky_proj.spjplugin.structure.SpjStructureViewFactory"/>
 
         <!--<annotator language="spj" implementationClass="com.ky_proj.spjplugin.annotator.SpjAnnotator"/>-->
 
