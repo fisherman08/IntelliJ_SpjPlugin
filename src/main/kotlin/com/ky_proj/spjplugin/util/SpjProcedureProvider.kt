@@ -71,4 +71,17 @@ object SpjProcedureProvider {
 
         return definitions
     }
+
+    fun findDefenitionInList(name: String, list: ArrayList<SpjProcedureDef>) :ArrayList<SpjProcedureDef>{
+        val result = ArrayList<SpjProcedureDef>()
+
+        for (def in list) {
+            val procedureName = def.node?.findChildByType(SpjTypes.PROCEDURE)?.text ?: ""
+            if(name.equals(procedureName)){
+                result.add(def)
+            }
+        }
+
+        return result
+    }
 }

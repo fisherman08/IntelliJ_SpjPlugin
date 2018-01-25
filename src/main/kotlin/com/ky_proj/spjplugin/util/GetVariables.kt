@@ -4,14 +4,10 @@ package com.ky_proj.spjplugin.util
  * Created on 2018/01/19.
  */
 import com.intellij.lang.ASTNode
-import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
-import com.intellij.psi.tree.IElementType
-import com.intellij.vcs.log.graph.PrintElement
 import com.ky_proj.spjplugin.psi.SpjTypes
 
 import java.util.ArrayList
-import java.util.regex.Pattern
 
 class GetVariables(file: PsiFile) {
     private var myFile: PsiFile? = file
@@ -24,7 +20,7 @@ class GetVariables(file: PsiFile) {
 
             children.forEach { child ->
                 val node = child.node
-                __getVariables(result, node)
+                getChildVariables(result, node)
             }
 
             return result.toTypedArray()
@@ -32,7 +28,7 @@ class GetVariables(file: PsiFile) {
 
 
 
-    private fun __getVariables(result: MutableList<String>, node: ASTNode) {
+    private fun getChildVariables(result: MutableList<String>, node: ASTNode) {
 
         val type = node.elementType
 
@@ -53,7 +49,7 @@ class GetVariables(file: PsiFile) {
 
             val children = node.getChildren(null)
             for (__child in children) {
-                __getVariables(result, __child)
+                getChildVariables(result, __child)
             }
         }
     }

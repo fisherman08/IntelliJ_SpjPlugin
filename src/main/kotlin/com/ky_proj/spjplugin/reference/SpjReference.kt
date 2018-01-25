@@ -6,8 +6,11 @@ import com.intellij.lang.ASTNode
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.*
+import com.ky_proj.spjplugin.psi.SpjFile
 import com.ky_proj.spjplugin.psi.SpjProcedureDef
 import com.ky_proj.spjplugin.psi.SpjTypes
+import com.ky_proj.spjplugin.psi.impl.SpjNamedElementImpl
+import com.ky_proj.spjplugin.util.SpjProcedureProvider
 import org.jetbrains.annotations.*
 
 import java.util.*
@@ -16,9 +19,8 @@ class SpjReference(element: PsiElement) : PsiReferenceBase<PsiElement>(element, 
     private var myResolveResults: Array<ResolveResult>? = null
 
     override fun multiResolve(incompleteCode: Boolean): Array<ResolveResult> {
-        return ArrayList<ResolveResult>().toTypedArray()
 
-       /* if (myResolveResults != null) {
+       if (myResolveResults != null) {
             // すでにキャッシュされてるものがあってかつ全てが有効なららそれを返す。
             var is_cache_valid = true
             for (res in myResolveResults!!) {
@@ -31,70 +33,76 @@ class SpjReference(element: PsiElement) : PsiReferenceBase<PsiElement>(element, 
 
             if (is_cache_valid) {
                 // キャッシュが全て有効ならそのまま返す
-                return myResolveResults
+                return myResolveResults!!
             }
         }
 
-        val project = myElement.project
-        val file = myElement.containingFile
-        val elementType = myElement.node.elementType
+        val elementType   = myElement.node.elementType
+        var results       = ArrayList<ResolveResult>()
+        var procedureName = "";
 
-        val results = ArrayList<ResolveResult>()
+        when(elementType) {
 
-
-        var proc: ASTNode? = null
-
-        if (elementType === SpjTypes.CALLING_PROCEDURE ||
-                elementType === SpjTypes.PROC_CALL ||
-                elementType === SpjTypes.CALLING_FUNCTION) {
-            if (elementType === SpjTypes.CALLING_PROCEDURE) {
+            SpjTypes.CALLING_PROCEDURE -> {
                 // calling_procedureエレメントならプロシージャ名を探す
-                val proc_call = myElement.node.findChildByType(SpjTypes.PROC_CALL)
-                if (proc_call != null) {
-                    proc = proc_call.findChildByType(SpjTypes.PROCEDURE_CALL)
-                }
-
-            } else if (elementType === SpjTypes.PROC_CALL) {
-
-                proc = myElement.node.findChildByType(SpjTypes.PROCEDURE_CALL)
-
-            } else if (elementType === SpjTypes.CALLING_FUNCTION) {
-                // 関数形式の呼び出しの時
-                proc = myElement.node.findChildByType(SpjTypes.FUNCTION)
-
+                procedureName = myElement.node.findChildByType(SpjTypes.PROC_CALL)?.findChildByType(SpjTypes.PROCEDURE_CALL)?.text ?:""
             }
 
-            if (proc != null) {
-
-                // プロシージャを呼び出してるところだったら定義元にジャンプさせる
-                val proc_name = proc.text
-
-                // まずは同じページの中で定義を探す
-                var defs = SpjUtil.GET_PROCS.getProcDefsByName(project, file, proc_name)
-
-                // もし同じページになかったらプロジェクト全体から探す
-                if (defs.size == 0) {
-                    defs = SpjUtil.GET_PROCS.getProcDefsByName(project, proc_name)
-                }
-
-                for (def in defs) {
-                    results.add(PsiElementResolveResult(def))
-                }
-                // 何度もgetProcDefsを呼ぶと死ぬのでResolveResult[]をキャッシュしておく。
-                // ResolveResultを持っておくと、参照先のプロシージャ定義が移動したりしてもよしなに対応してくれる模様
-                if (results.size > 0) {
-                    myResolveResults = results.toTypedArray()
-                    return myResolveResults
-                }
-
+            SpjTypes.PROC_CALL -> {
+                procedureName = myElement.node.findChildByType(SpjTypes.PROCEDURE_CALL)?.text ?:""
             }
 
+            SpjTypes.CALLING_FUNCTION -> {
+                procedureName = myElement.node.findChildByType(SpjTypes.FUNCTION)?.text ?: ""
+            }
+
+            else -> {
+                results.add(PsiElementResolveResult(myElement))
+                return results.toTypedArray()
+            }
+
+        }
+
+        if(procedureName.isEmpty()){
+            results.add(PsiElementResolveResult(myElement))
+            return results.toTypedArray()
+        }
+
+        // プロシージャ名で定義元を探す
+        results = findProcedureDef(procedureName)
+
+        // 何度もgetProcDefsを呼ぶと死ぬのでResolveResult[]をキャッシュしておく。
+        // ResolveResultを持っておくと、参照先のプロシージャ定義が移動したりしてもよしなに対応してくれる模様
+        if (results.size > 0) {
+            myResolveResults = results.toTypedArray()
+            return myResolveResults!!
         }
 
         results.add(PsiElementResolveResult(myElement))
         return results.toTypedArray()
-        */
     }
+
+
+    private fun findProcedureDef(procedureName :String): ArrayList<ResolveResult>{
+        val project     = myElement.project
+        val file        = myElement.containingFile as SpjFile
+        val results    = ArrayList<ResolveResult>()
+
+
+        // まずは同じページの中で定義を探す
+        var defs = SpjProcedureProvider.findDefenitionInList(procedureName, SpjProcedureProvider.listInFile(file, false))
+
+        // もし同じページになかったらプロジェクト全体から探す
+        if (defs.size == 0) {
+            defs = SpjProcedureProvider.findDefenitionInList(procedureName, SpjProcedureProvider.listInProject(project, false))
+        }
+
+        for (def in defs) {
+            results.add(PsiElementResolveResult(def))
+        }
+        return results
+    }
+
 
     override fun resolve(): PsiElement? {
         val resolveResults = multiResolve(false)

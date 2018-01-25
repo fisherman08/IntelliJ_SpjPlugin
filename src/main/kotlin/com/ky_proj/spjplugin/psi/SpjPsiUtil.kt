@@ -2,6 +2,7 @@ package com.ky_proj.spjplugin.psi
 
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiFileFactory
+import com.intellij.psi.tree.IElementType
 import com.ky_proj.spjplugin.filetype.SpjFileType
 import java.net.URL
 
@@ -19,5 +20,10 @@ object SpjPsiUtil {
     fun createSpjFilewithString(project :Project, string :String) : SpjFile{
         val type = SpjFileType.INSTANCE
         return PsiFileFactory.getInstance(project).createFileFromText("______com.ky_proj.spjplugin.defaults.command.spj_____", type, string) as SpjFile
+    }
+
+    fun createProcedureCallwithName(project: Project, name: String): IElementType {
+        val file = createSpjFilewithString(project, name)
+        return file.firstChild as IElementType
     }
 }
