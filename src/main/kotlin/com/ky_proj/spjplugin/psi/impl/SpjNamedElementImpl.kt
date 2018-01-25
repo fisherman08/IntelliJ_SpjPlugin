@@ -21,9 +21,9 @@ open class SpjNamedElementImpl(node: ASTNode) : ASTWrapperPsiElement(node), PsiN
         val ref = myRef ?:SpjReference(this)
         // getReferenceが呼ばれるたびにSpjReferenceをインスタンス化するとパフォーマンスが大変なことになるのでキャッシュしておく
         myRef = ref
+
         return ref
     }
-
 
     override fun getName(): String? {
         var result :String = ""
