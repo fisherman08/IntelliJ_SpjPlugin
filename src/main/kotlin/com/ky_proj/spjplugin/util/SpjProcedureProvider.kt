@@ -72,7 +72,11 @@ object SpjProcedureProvider {
         return definitions
     }
 
-    fun findDefenitionInList(name: String, list: ArrayList<SpjProcedureDef>) :ArrayList<SpjProcedureDef>{
+    fun findDefinitionInProject(project :Project, name : String, is_only_return :Boolean) :ArrayList<SpjProcedureDef>{
+        return findDefinitionInList(name, listInProject(project, is_only_return))
+    }
+
+    fun findDefinitionInList(name: String, list: ArrayList<SpjProcedureDef>) :ArrayList<SpjProcedureDef>{
         val result = ArrayList<SpjProcedureDef>()
 
         for (def in list) {
