@@ -85,7 +85,7 @@
 
         <lang.psiStructureViewFactory language="spj" implementationClass="com.ky_proj.spjplugin.structure.SpjStructureViewFactory"/>
 
-        <!--<annotator language="spj" implementationClass="com.ky_proj.spjplugin.annotator.SpjAnnotator"/>-->
+        <annotator language="spj" implementationClass="com.ky_proj.spjplugin.annotator.SpjAnnotator"/>
 
         <!--<lang.findUsagesProvider language="spj" implementationClass="com.ky_proj.spjplugin.findusage.SpjFindUsagesProvider"/>-->
 

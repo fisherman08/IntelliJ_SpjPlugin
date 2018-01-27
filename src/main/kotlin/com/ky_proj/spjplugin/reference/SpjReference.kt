@@ -1,17 +1,11 @@
 package com.ky_proj.spjplugin.reference
 
-import com.intellij.psi.tree.IElementType
 import com.intellij.util.IncorrectOperationException
-import com.intellij.lang.ASTNode
-import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.*
 import com.ky_proj.spjplugin.psi.SpjFile
-import com.ky_proj.spjplugin.psi.SpjProcedureDef
 import com.ky_proj.spjplugin.psi.SpjTypes
-import com.ky_proj.spjplugin.psi.impl.SpjNamedElementImpl
 import com.ky_proj.spjplugin.util.SpjProcedureProvider
-import org.jetbrains.annotations.*
 
 import java.util.*
 
@@ -90,11 +84,11 @@ class SpjReference(element: PsiElement) : PsiReferenceBase<PsiElement>(element, 
 
 
         // まずは同じページの中で定義を探す
-        var defs = SpjProcedureProvider.findDefenitionInList(procedureName, SpjProcedureProvider.listInFile(file, false))
+        var defs = SpjProcedureProvider.findDefinitionInList(procedureName, SpjProcedureProvider.listInFile(file, false))
 
         // もし同じページになかったらプロジェクト全体から探す
         if (defs.size == 0) {
-            defs = SpjProcedureProvider.findDefenitionInList(procedureName, SpjProcedureProvider.listInProject(project, false))
+            defs = SpjProcedureProvider.findDefinitionInList(procedureName, SpjProcedureProvider.listInProject(project, false))
         }
 
         for (def in defs) {
