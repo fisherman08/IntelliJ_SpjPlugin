@@ -89,7 +89,7 @@
 
         <!--<lang.findUsagesProvider language="spj" implementationClass="com.ky_proj.spjplugin.findusage.SpjFindUsagesProvider"/>-->
 
-        <!--<lang.commenter language="spj" implementationClass="com.ky_proj.spjplugin.commenter.SpjCommenter"/>-->
+        <lang.commenter language="spj" implementationClass="com.ky_proj.spjplugin.commenter.SpjCommenter"/>
 
         <!--<lang.foldingBuilder language="spj" implementationClass="com.ky_proj.spjplugin.folding.SpjFoldingBuilder"/>-->
 
