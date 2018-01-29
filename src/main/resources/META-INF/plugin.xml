@@ -91,7 +91,7 @@
 
         <lang.commenter language="spj" implementationClass="com.ky_proj.spjplugin.commenter.SpjCommenter"/>
 
-        <!--<lang.foldingBuilder language="spj" implementationClass="com.ky_proj.spjplugin.folding.SpjFoldingBuilder"/>-->
+        <lang.foldingBuilder language="spj" implementationClass="com.ky_proj.spjplugin.folding.SpjFoldingBuilder"/>
 
         <!--&lt;!&ndash;live template&ndash;&gt;-->
         <!--<defaultLiveTemplatesProvider implementation="com.ky_proj.spjplugin.template.SpjTemplateProvider"/>-->
