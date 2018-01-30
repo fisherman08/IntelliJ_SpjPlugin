@@ -74,7 +74,7 @@
 
         <lang.braceMatcher language="spj" implementationClass="com.ky_proj.spjplugin.completion.SpjBraceMatcher"/>
 
-        <!--<problemFileHighlightFilter implementation="com.ky_proj.spjplugin.highlight.SpjProblemFileHighlightFilter"/>-->
+        <problemFileHighlightFilter implementation="com.ky_proj.spjplugin.highlight.SpjProblemFileHighlightFilter"/>
 
         <!--<codeStyleSettingsProvider implementation="com.ky_proj.spjplugin.SpjCodeStyleSettingsProvider"/>-->
         <!--<langCodeStyleSettingsProvider implementation="com.ky_proj.spjplugin.SpjLanguageCodeStyleSettingsProvider"/>-->
@@ -87,7 +87,7 @@
 
         <annotator language="spj" implementationClass="com.ky_proj.spjplugin.annotator.SpjAnnotator"/>
 
-        <!--<lang.findUsagesProvider language="spj" implementationClass="com.ky_proj.spjplugin.findusage.SpjFindUsagesProvider"/>-->
+        <lang.findUsagesProvider language="spj" implementationClass="com.ky_proj.spjplugin.findusage.SpjFindUsagesProvider"/>
 
         <lang.commenter language="spj" implementationClass="com.ky_proj.spjplugin.commenter.SpjCommenter"/>
 
