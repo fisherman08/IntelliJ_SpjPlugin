@@ -8,6 +8,10 @@ import com.intellij.openapi.project.Project
 // TODO: 根本的に仮実装なう
 class SpjSetting(project :Project){
 
+    fun isEnhanceMode() :Boolean{
+        return (getNeoVersion() == 4.0f)
+    }
+
     fun getNeoVersion() :Float{
         return 4.0f
     }

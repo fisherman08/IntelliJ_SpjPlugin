@@ -3,7 +3,6 @@ package com.ky_proj.spjplugin.annotator
 /**
  * Created on 2018/01/27.
  */
-
 import com.intellij.lang.ASTNode
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
@@ -13,7 +12,6 @@ import com.intellij.psi.util.PsiTreeUtil
 import com.ky_proj.spjplugin.psi.*
 import com.ky_proj.spjplugin.setting.SpjSetting
 import com.ky_proj.spjplugin.util.SpjProcedureProvider
-import com.ky_proj.spjplugin.util.SpjSettingProvider
 import com.ky_proj.spjplugin.util.SpjTreeUtil
 
 class SpjAnnotator : Annotator {
@@ -79,8 +77,6 @@ class SpjAnnotator : Annotator {
         val setting = SpjSetting(element.project)
         val neoVersion = setting.getNeoVersion()
 
-
-
         val arg_count_defined = getArgsCount(def)
         val arg_count_called  = getArgsCount(caller)
 
@@ -129,7 +125,7 @@ class SpjAnnotator : Annotator {
         val procedureName = element?.text ?: return
 
         val project = element.project
-        val isEnhanceMode = SpjSettingProvider.isEnhanceMode(project)
+        val isEnhanceMode = SpjSetting(project).isEnhanceMode()
 
         // 不正な文字を含んでいる
         utilAnnotateInvalidCharacter(element, holder)
@@ -175,11 +171,10 @@ class SpjAnnotator : Annotator {
 
     // 引数ブロック
     private fun annotateArguments(element: PsiElement, holder: AnnotationHolder) {
-        val setting = SpjSetting(element.project)
-        val neo_version = setting.getNeoVersion()
+        val neoVersion = SpjSetting(element.project).getNeoVersion()
 
         // neo3以前なら問題ない
-        if (neo_version < 4.0) {
+        if (neoVersion < 4.0) {
             return
         }
 

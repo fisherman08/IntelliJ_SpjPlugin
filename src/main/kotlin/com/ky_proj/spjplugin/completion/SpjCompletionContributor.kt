@@ -15,11 +15,13 @@ import com.ky_proj.spjplugin.completion.inserthandler.ProcedureInsertHandler
 import com.ky_proj.spjplugin.icon.SpjIcon
 import com.ky_proj.spjplugin.language.SpjLanguage
 import com.ky_proj.spjplugin.psi.*
+import com.ky_proj.spjplugin.setting.SpjSetting
 import com.ky_proj.spjplugin.util.*
 
 class SpjCompletionContributor : CompletionContributor() {
 
     init {
+
         // コマンド
         extend(CompletionType.BASIC,
                 PlatformPatterns.psiElement(SpjTypes.COMMAND_CALL).withLanguage(SpjLanguage.INSTANCE),
@@ -138,13 +140,18 @@ class SpjCompletionContributor : CompletionContributor() {
 
     private fun addProcedures(type: IElementType, onlyWithReturn: Boolean) {
 
-        // TODO:: project.isEnhanceMode = falseの時に関数形式を無視する
-
         extend(CompletionType.BASIC,
                 PlatformPatterns.psiElement(type).withLanguage(SpjLanguage.INSTANCE),
                 object : CompletionProvider<CompletionParameters>() {
                     public override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, resultSet: CompletionResultSet) {
-                        val procedures = SpjProcedureProvider.listInProject(parameters.originalFile.project, onlyWithReturn)
+                        val project = parameters.originalFile.project
+                        val setting = SpjSetting(project)
+
+                        if (!setting.isEnhanceMode() && type != SpjTypes.PROCEDURE_CALL )
+                            // EnhanceModeじゃなければ関数形式の呼び出しには対応させない
+                            return
+
+                        val procedures = SpjProcedureProvider.listInProject(project, onlyWithReturn)
 
                         for (procedure in procedures) {
                             val body = procedure.node.findChildByType(SpjTypes.PROCEDURE)?.text ?: continue
