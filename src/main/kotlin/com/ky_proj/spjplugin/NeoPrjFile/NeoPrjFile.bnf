@@ -1,0 +1,30 @@
+{
+  parserClass="com.ky_proj.spjplugin.parser.NeoPrjFile.NeoPrjFileParser"
+  parserUtilClass="com.ky_proj.spjplugin.NeoPrjFile.parser.NeoPrjFileParserUtil"
+
+  //extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+  extends="com.ky_proj.spjplugin.NeoPrjFile.psi.impl.NeoPrjFileNamedElementImpl"
+
+  psiClassPrefix="NeoPrjFile"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.ky_proj.spjplugin.NeoPrjFile.psi"
+  psiImplPackage="com.ky_proj.spjplugin.NeoPrjFile.psi.impl"
+
+  elementTypeHolderClass="com.ky_proj.spjplugin.NeoPrjFile.psi.NeoPrjFileTypes"
+  elementTypeClass="com.ky_proj.spjplugin.NeoPrjFile.psi.NeoPrjFileTokenType"
+  tokenTypeClass="com.ky_proj.spjplugin.NeoPrjFile.psi.NeoPrjFileTokenType"
+
+  psiImplUtilClass="com.ky_proj.spjplugin.NeoPrjFile.psi.impl.NeoPrjFilePsiImplUtil"
+}
+
+NeoPrjFileFile ::= (property|COMMENT)*
+
+property ::= (KEY SEPARATOR VALUE?)|(KEY SEPARATOR)|KEY {
+    pin=3
+    recoverWhile="recover_property"
+    mixin="com.ky_proj.spjplugin.NeoPrjFile.psi.impl.NeoPrjFileNamedElementImpl"
+    implements="com.ky_proj.spjplugin.NeoPrjFile.psi.NeoPrjFileNamedElement"
+    methods=[getKey getValue getName setName getNameIdentifier getPresentation]
+}
+
+private recover_property ::= !(KEY|SEPARATOR|COMMENT)

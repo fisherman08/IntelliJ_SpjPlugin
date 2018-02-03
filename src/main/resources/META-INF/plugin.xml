@@ -100,12 +100,12 @@
 
 
 
-        <!--&lt;!&ndash;below are prj file configurations&ndash;&gt;-->
-        <!--<fileTypeFactory implementation="com.ky_proj.spjplugin.NeoPrjFile.NeoPrjFileFileTypeFactory"/>-->
-        <!--<lang.parserDefinition language="prj" implementationClass="com.ky_proj.spjplugin.NeoPrjFile.NeoPrjFileParserDefinition"/>-->
-        <!--<lang.syntaxHighlighterFactory language="prj" implementationClass="com.ky_proj.spjplugin.NeoPrjFile.NeoPrjFileSyntaxHighlighterFactory"/>-->
+        <!--below are prj file configurations-->
+        <fileTypeFactory implementation="com.ky_proj.spjplugin.NeoPrjFile.filetype.NeoPrjFileFileTypeFactory"/>
+        <lang.parserDefinition language="prj" implementationClass="com.ky_proj.spjplugin.NeoPrjFile.parser.NeoPrjFileParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="prj" implementationClass="com.ky_proj.spjplugin.NeoPrjFile.highlight.NeoPrjFileSyntaxHighlighterFactory"/>
 
-        <!--&lt;!&ndash; project settings &ndash;&gt;-->
+        <!-- project settings -->
         <!--<projectConfigurable groupId="language" instance="com.ky_proj.spjplugin.settings.SpjSettingsConfigurable"/>-->
     </extensions>
 
