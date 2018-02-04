@@ -24,7 +24,7 @@ class SpjFileType private constructor() : LanguageFileType(SpjLanguage.INSTANCE)
     }
 
     override fun getIcon(): Icon? {
-        return SpjIcon.FILE
+        return SpjIcon.SPJ
     }
 
     companion object {

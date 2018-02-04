@@ -9,7 +9,11 @@ import com.intellij.openapi.util.IconLoader
 class SpjIcon {
     companion object {
         val FileName = "/icons/icon_spj.png"
-        @JvmStatic val FILE = IconLoader.getIcon(FileName)
+        @JvmStatic val SPJ = IconLoader.getIcon(FileName)
+
+        @JvmStatic val PROCEDURE = IconLoader.getIcon("/icons/procedure.png")
+        @JvmStatic val FUNCTION = IconLoader.getIcon("/icons/function.png")
+        @JvmStatic val COMMAND = IconLoader.getIcon("/icons/command.png")
     }
 
 }

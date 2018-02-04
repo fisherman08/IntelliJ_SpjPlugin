@@ -9,12 +9,11 @@ import com.ky_proj.spjplugin.util.SpjUtil
 import com.ky_proj.spjplugin.icon.SpjIcon
 
 import javax.swing.*
-import java.io.*
 
 class SpjColorSettingsPage : ColorSettingsPage {
 
     override fun getIcon(): Icon? {
-        return SpjIcon.FILE
+        return SpjIcon.SPJ
     }
 
     override fun getHighlighter(): SyntaxHighlighter {
