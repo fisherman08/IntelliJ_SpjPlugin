@@ -32,7 +32,7 @@ class SpjCompletionContributor : CompletionContributor() {
                             val element = LookupElementBuilder.create(command, command.node.text)
                                     .withTypeText("built in command", true)
                                     .withInsertHandler(CommandInsertHandler())
-                                    .withIcon(SpjIcon.FILE)
+                                    .withIcon(SpjIcon.COMMAND)
                             resultSet.addElement(element)
                         }
                     }
@@ -111,7 +111,7 @@ class SpjCompletionContributor : CompletionContributor() {
                             val element = LookupElementBuilder.create(command, command.node.text)
                                     .withTypeText("built in function", true)
                                     .withInsertHandler(CommandInsertHandler())
-                                    .withIcon(SpjIcon.FILE)
+                                    .withIcon(SpjIcon.FUNCTION)
                             resultSet.addElement(element)
                         }
                     }
@@ -161,7 +161,7 @@ class SpjCompletionContributor : CompletionContributor() {
                             val element = LookupElementBuilder.create(procedure, lookUpString)
                                     .withTypeText(procedure.containingFile.name, true)
                                     .withInsertHandler(ProcedureInsertHandler())
-                                    .withIcon(SpjIcon.FILE)
+                                    .withIcon(SpjIcon.PROCEDURE)
 
                             resultSet.addElement(element)
 

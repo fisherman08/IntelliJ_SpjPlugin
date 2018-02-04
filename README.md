@@ -1,4 +1,6 @@
 # IntelliJ SpjPlugin
+![logo](https://github.com/fisherman08/IntelliJ_SpjPlugin/blob/media/logo.png)
+
 A Plugin For IntelliJ Family IDEs to Develop 101NEO SPJ Language
 
 [![Build Status](https://travis-ci.org/fisherman08/IntelliJ_SpjPlugin.svg?branch=master)](https://travis-ci.org/fisherman08/IntelliJ_SpjPlugin)

@@ -78,7 +78,7 @@ class SpjStructureViewElement(private val element: PsiElement) : StructureViewTr
 
             override fun getIcon(open: Boolean): Icon? {
                 return if (element is SpjFile) {
-                    SpjIcon.FILE
+                    SpjIcon.SPJ
                 } else {
                     null
                 }
