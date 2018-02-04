@@ -18,6 +18,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
 import com.ky_proj.spjplugin.icon.SpjIcon
 import com.ky_proj.spjplugin.psi.SpjFile
+import com.ky_proj.spjplugin.psi.SpjProcedureDef
 import com.ky_proj.spjplugin.psi.SpjTypes
 import com.ky_proj.spjplugin.util.SpjProcedureProvider
 import com.sun.istack.internal.Nullable
@@ -79,6 +80,8 @@ class SpjStructureViewElement(private val element: PsiElement) : StructureViewTr
             override fun getIcon(open: Boolean): Icon? {
                 return if (element is SpjFile) {
                     SpjIcon.SPJ
+                } else if (element is SpjProcedureDef) {
+                    SpjIcon.PROCEDURE
                 } else {
                     null
                 }
