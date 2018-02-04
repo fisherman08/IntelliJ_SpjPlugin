@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="320"
+   height="320"
+   viewBox="0 0 320 320"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="icon.svg"
+   inkscape:export-filename="E:\my documents\My Pictures\IntelliJ_SpjPlugin\icons\icon_spj.png"
+   inkscape:export-xdpi="4.5"
+   inkscape:export-ydpi="4.5">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.89"
+     inkscape:cx="231.73486"
+     inkscape:cy="163.00097"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer3"
+     showgrid="false"
+     units="px"
+     width="160px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="レイヤー 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-732.3622)"
+     style="display:inline" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="lines"
+     style="display:inline" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="logo_back"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="163.75661"
+       y="153.06879"
+       id="text4223"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4225"
+         x="163.75661"
+         y="153.06879"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Nirmala UI';-inkscape-font-specification:'Nirmala UI Bold'" /></text>
+    <g
+       id="g4521"
+       inkscape:export-filename="E:\my documents\My Pictures\IntelliJ_SpjPlugin\logo.png"
+       inkscape:export-xdpi="119.36842"
+       inkscape:export-ydpi="119.36842"
+       style="fill:#ffcc00;fill-opacity:1">
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="rect4467"
+         d="m 44.444444,113.65079 10.582011,-10.58201 96.825395,0 0,56.08466 -120.634919,0 0,-34.92064 z"
+         style="opacity:1;fill:#ffcc00;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="rect4467-2"
+         d="m 258.73015,113.6508 -10.58201,-10.58202 -96.82539,0 0,56.08467 120.63492,0 0,-34.92064 z"
+         style="display:inline;opacity:1;fill:#ffcc00;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="rect4467-2-5"
+         d="m 258.73015,190.89947 -10.58201,10.58202 -96.82539,0 0,-56.08467 120.63492,0 0,34.92064 z"
+         style="display:inline;opacity:1;fill:#ffcc00;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="rect4467-2-5-4"
+         d="m 44.444451,190.89947 10.58201,10.58202 96.825389,0 0,-56.08467 -120.634919,0 0,34.92064 z"
+         style="display:inline;opacity:1;fill:#ffcc00;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="logo_char"
+     style="display:inline">
+    <rect
+       style="opacity:1;fill:#696969;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4539"
+       width="152.91005"
+       height="6.8783069"
+       x="30.68783"
+       y="173.43915"
+       inkscape:export-filename="E:\my documents\My Pictures\IntelliJ_SpjPlugin\logo.png"
+       inkscape:export-xdpi="119.36842"
+       inkscape:export-ydpi="119.36842" />
+    <rect
+       style="display:inline;opacity:1;fill:#696969;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4539-9"
+       width="152.91005"
+       height="6.8783069"
+       x="119.04762"
+       y="173.43915"
+       inkscape:export-filename="E:\my documents\My Pictures\IntelliJ_SpjPlugin\logo.png"
+       inkscape:export-xdpi="119.36842"
+       inkscape:export-ydpi="119.36842" />
+    <g
+       id="g4527"
+       transform="translate(-5.2910053,-1.9850366)"
+       inkscape:export-filename="E:\my documents\My Pictures\IntelliJ_SpjPlugin\logo.png"
+       inkscape:export-xdpi="119.36842"
+       inkscape:export-ydpi="119.36842">
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-244.98126"
+         x="117.53118"
+         height="12.346309"
+         width="74.451988"
+         id="rect4308-1-3"
+         style="display:inline;opacity:1;fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         y="179.63686"
+         x="192.60298"
+         height="12.346309"
+         width="52.378284"
+         id="rect4308-3"
+         style="display:inline;opacity:1;fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-204.9493"
+         x="162.42685"
+         height="12.346309"
+         width="29.556318"
+         id="rect4308-1-2-0"
+         style="display:inline;opacity:1;fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
+       id="g4515"
+       transform="translate(-2.074022,-1.9850254)"
+       inkscape:export-filename="E:\my documents\My Pictures\IntelliJ_SpjPlugin\logo.png"
+       inkscape:export-xdpi="119.36842"
+       inkscape:export-ydpi="119.36842">
+      <rect
+         y="116.47297"
+         x="130.36343"
+         height="12.346309"
+         width="56.119587"
+         id="rect4308"
+         style="opacity:1;fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-142.70975"
+         x="135.92776"
+         height="12.346309"
+         width="56.119587"
+         id="rect4308-1"
+         style="display:inline;opacity:1;fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-186.48302"
+         x="123.20731"
+         height="12.346309"
+         width="32.549362"
+         id="rect4308-1-2"
+         style="display:inline;opacity:1;fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         y="143.41037"
+         x="130.36343"
+         height="12.346309"
+         width="56.119587"
+         id="rect4308-8"
+         style="display:inline;opacity:1;fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
+       id="g4532"
+       transform="translate(0,-1.9705963)"
+       inkscape:export-filename="E:\my documents\My Pictures\IntelliJ_SpjPlugin\logo.png"
+       inkscape:export-xdpi="119.36842"
+       inkscape:export-ydpi="119.36842">
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="rect4308-7"
+         d="m 56.490859,120.58841 6.0564,-4.12987 48.278381,0.0144 0,12.3463 -57.897718,-0.18707 c 0.06395,-2.18227 -0.559718,1.92046 0.01369,-5.6115 z"
+         style="display:inline;opacity:1;fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         transform="matrix(0.65301928,0.75734128,-0.74616303,0.66576328,0,0)"
+         y="30.843412"
+         x="131.41521"
+         height="12.83395"
+         width="77.565292"
+         id="rect4308-1-3-8"
+         style="display:inline;opacity:1;fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="rect4308-7-1"
+         d="m 109.89015,186.7951 -6.13909,4.12987 -48.93754,-0.0144 0,-12.3463 58.68821,0.18707 c -0.0648,2.18227 0.56736,-1.92046 -0.0139,5.6115 z"
+         style="display:inline;opacity:1;fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>
