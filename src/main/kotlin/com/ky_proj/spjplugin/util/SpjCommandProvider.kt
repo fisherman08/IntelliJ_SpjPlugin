@@ -13,6 +13,10 @@ object SpjCommandProvider{
 
     private var hiddenList :Array<PsiElement> = ArrayList<PsiElement>().toTypedArray()
 
+    /**
+     * 組み込みコマンドのリストを返す。
+     * シングルトンなので受け取った側でリストの中身を操作されると詰むので気をつけよう。
+     */
     fun list(project: Project) :Array<PsiElement>{
         if(hiddenList.isNotEmpty())
             return hiddenList
