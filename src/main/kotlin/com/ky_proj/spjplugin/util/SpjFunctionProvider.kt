@@ -12,12 +12,13 @@ import com.ky_proj.spjplugin.psi.SpjPsiUtil
 object SpjFunctionProvider{
     private var hiddenList :Array<PsiElement> = ArrayList<PsiElement>().toTypedArray()
 
-        fun list(project: Project) :Array<PsiElement>{
+    fun list(project: Project) :Array<PsiElement>{
         if(hiddenList.isNotEmpty())
             return hiddenList
 
         val file = SpjPsiUtil.createSpjFilewithResource(project, "/builtin/functions.spj")
         hiddenList = PsiTreeUtil.findChildrenOfType(file, SpjCallingFunction::class.java).toTypedArray()
+
         return hiddenList
     }
 }

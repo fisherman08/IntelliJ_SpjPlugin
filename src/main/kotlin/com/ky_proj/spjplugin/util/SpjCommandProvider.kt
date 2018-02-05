@@ -19,6 +19,7 @@ object SpjCommandProvider{
 
         val file = SpjPsiUtil.createSpjFilewithResource(project, "/builtin/commands.spj")
         hiddenList = PsiTreeUtil.findChildrenOfType(file, SpjCallingFunction::class.java).toTypedArray()
+
         return hiddenList
     }
 }
