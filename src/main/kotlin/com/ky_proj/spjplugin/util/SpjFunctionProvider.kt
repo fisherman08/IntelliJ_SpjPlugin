@@ -10,8 +10,15 @@ import com.ky_proj.spjplugin.psi.SpjPsiUtil
  * Created on 2018/01/20.
  */
 object SpjFunctionProvider{
+    private var hiddenList :Array<PsiElement> = ArrayList<PsiElement>().toTypedArray()
+
     fun list(project: Project) :Array<PsiElement>{
+        if(hiddenList.isNotEmpty())
+            return hiddenList
+
         val file = SpjPsiUtil.createSpjFilewithResource(project, "/builtin/functions.spj")
-        return PsiTreeUtil.findChildrenOfType(file, SpjCallingFunction::class.java).toTypedArray()
+        hiddenList = PsiTreeUtil.findChildrenOfType(file, SpjCallingFunction::class.java).toTypedArray()
+
+        return hiddenList
     }
 }
