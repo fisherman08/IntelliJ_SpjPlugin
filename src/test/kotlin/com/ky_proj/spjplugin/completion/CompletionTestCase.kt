@@ -5,6 +5,8 @@ package com.ky_proj.spjplugin.completion
  */
 import com.intellij.codeInsight.completion.CompletionType
 import com.ky_proj.spjplugin.SpjTestCase
+import com.ky_proj.spjplugin.util.SpjCommandProvider
+import com.ky_proj.spjplugin.util.SpjFunctionProvider
 import com.ky_proj.spjplugin.util.SpjProcedureProvider
 import org.junit.Assert.assertNotEquals
 import org.junit.Before
