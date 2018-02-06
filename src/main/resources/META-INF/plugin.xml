@@ -52,6 +52,8 @@
     ]]>
     </change-notes>
 
+
+
     <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="171"/>
 
@@ -60,7 +62,8 @@
 
     <depends>com.intellij.modules.lang</depends>
 
-
+    <!--Exteensionのりすと-->
+    <!--https://upsource.jetbrains.com/idea-ce/file/idea-ce-d00d8b4ae3ed33097972b8a4286b336bf4ffcfab/platform/platform-resources/src/META-INF/LangExtensionPoints.xml-->
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <fileTypeFactory implementation="com.ky_proj.spjplugin.filetype.SpjFileTypeFactory"/>
@@ -71,6 +74,8 @@
         <colorSettingsPage implementation="com.ky_proj.spjplugin.syntaxhighlighter.SpjColorSettingsPage"/>
         <!--color default-->
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/SpjDarcula.xml"/>
+
+        <codeInsight.parameterNameHints language="spj" implementationClass="com.ky_proj.spjplugin.codeinsight.SpjInlayParameterHintsProvider" />
 
         <lang.braceMatcher language="spj" implementationClass="com.ky_proj.spjplugin.completion.SpjBraceMatcher"/>
 

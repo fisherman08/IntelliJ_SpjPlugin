@@ -12,6 +12,10 @@ import com.ky_proj.spjplugin.psi.SpjPsiUtil
 object SpjFunctionProvider{
     private var hiddenList :Array<PsiElement> = ArrayList<PsiElement>().toTypedArray()
 
+    /**
+     * 組み込み関数のリストを返す。
+     * 高速化のためにシングルトンなので受け取った側でリストの中身を操作されると詰むので気をつけよう。
+     */
     fun list(project: Project) :Array<PsiElement>{
         if(hiddenList.isNotEmpty())
             return hiddenList
