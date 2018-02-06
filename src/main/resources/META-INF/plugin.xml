@@ -75,7 +75,7 @@
         <!--color default-->
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/SpjDarcula.xml"/>
 
-        <!--<codeInsight.parameterNameHints language="spj" implementationClass="com.ky_proj.spjplugin.codeinsight.SpjInlayParameterHintsProvider" />-->
+        <codeInsight.parameterNameHints language="spj" implementationClass="com.ky_proj.spjplugin.codeinsight.SpjInlayParameterHintsProvider" />
 
         <lang.braceMatcher language="spj" implementationClass="com.ky_proj.spjplugin.completion.SpjBraceMatcher"/>
 

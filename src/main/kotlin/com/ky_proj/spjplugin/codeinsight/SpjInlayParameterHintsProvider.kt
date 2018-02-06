@@ -1,9 +1,8 @@
 package com.ky_proj.spjplugin.codeinsight
 
 import com.intellij.codeInsight.hints.*
-import com.intellij.psi.PsiCallExpression
 import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiMethod
+import com.intellij.psi.tree.TokenSet
 import com.ky_proj.spjplugin.language.SpjLanguage
 import com.ky_proj.spjplugin.psi.SpjTypes
 
@@ -13,27 +12,44 @@ class SpjInlayParameterHintsProvider : InlayParameterHintsProvider {
     }
 
     override fun getHintInfo(element: PsiElement): HintInfo.MethodInfo? {
-//        if (element is PsiCallExpression) {
-//            val resolvedElement = element.resolveMethodGenerics().element
-//            if (resolvedElement is PsiMethod) {
-//                return getMethodInfo(resolvedElement)
-//            }
-//        }
+        /*if (element is PsiCallExpression) {
+            val resolvedElement = element.resolveMethodGenerics().element
+            if (resolvedElement is PsiMethod) {
+                return getMethodInfo(resolvedElement)
+            }
+        }*/
         return null
     }
     override fun getParameterHints(element: PsiElement): List<InlayInfo> {
-//        if (element is PsiCallExpression) {
-//            return JavaInlayHintsProvider.createHints(element).toList()
-//        }
-
-        return if(element.node.elementType == SpjTypes.ARGS) {
-            listOf(InlayInfo("parameter", element.node.startOffset))
+        return if(getTokenSetForArg().contains(element.node.elementType)) {
+            getHintsOfArg(element)
         } else{
-            emptyList<InlayInfo>()
+            emptyList()
         }
     }
     override fun getDefaultBlackList() :Set<String> {
         return setOf("")
     }
 
+    private fun getHintsOfArg(element: PsiElement) :List<InlayInfo> {
+        val arguments = element.parent   ?: return emptyList()
+        val caller    = arguments.parent ?: return emptyList()
+
+        if(arguments.node.elementType != SpjTypes.ARGUMENTS)
+            return emptyList()
+
+        if(caller.node.elementType != SpjTypes.CALLING_PROCEDURE && caller.node.elementType != SpjTypes.CALLING_FUNCTION)
+            return emptyList()
+
+        val def = caller.reference?.resolve() ?: return emptyList()
+        val definedArguments = def.node.findChildByType(SpjTypes.ARGUMENTS)?.getChildren(TokenSet.create(SpjTypes.ARGS)) ?: return emptyList()
+
+        if(definedArguments.isEmpty()) return emptyList()
+
+        return listOf(InlayInfo("arg", element.node.startOffset))
+    }
+
+    private fun getTokenSetForArg() :TokenSet {
+        return TokenSet.create(SpjTypes.ARGS, SpjTypes.NUMBER, SpjTypes.CALLING_FUNCTION, SpjTypes.STRING)
+    }
 }
