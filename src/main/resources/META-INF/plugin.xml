@@ -16,6 +16,9 @@
         <li>basic code formatting and indent</li>
         <li>Structure view</li>
       </ul>
+
+      This plugin includes the work that is distributed in the Apache License 2.0
+
     ]]></description>
 
     <change-notes><![CDATA[
