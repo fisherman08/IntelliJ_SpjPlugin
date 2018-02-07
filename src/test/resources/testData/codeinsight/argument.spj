@@ -1,3 +1,0 @@
-[test:proc(varname, string, func)]
-
-perform test:proc(hash_array, "hoge", array.make())

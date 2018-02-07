@@ -64,8 +64,8 @@ sourceSets {
     }
 }
 
-jar {
+/*jar {
     archiveName "${baseName}-${version}.${extension}"
     destinationDir file("release")
 
-}
+}*/
