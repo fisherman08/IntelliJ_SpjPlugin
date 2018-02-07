@@ -100,9 +100,9 @@
 
     <project-components>
         <!-- Add your project components here -->
-        <!--<component>-->
-            <!--<implementation-class>com.ky_proj.spjplugin.SpjProjectComponent</implementation-class>-->
-        <!--</component>-->
+        <component>
+            <implementation-class>com.ky_proj.spjplugin.projectcomponent.SpjProjectComponent</implementation-class>
+        </component>
     </project-components>
 
     <actions>
