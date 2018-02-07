@@ -90,7 +90,7 @@
         <lang.syntaxHighlighterFactory language="prj" implementationClass="com.ky_proj.spjplugin.NeoPrjFile.highlight.NeoPrjFileSyntaxHighlighterFactory"/>
 
         <!-- project settings -->
-        <!--<projectConfigurable groupId="language" instance="com.ky_proj.spjplugin.settings.SpjSettingsConfigurable"/>-->
+        <projectConfigurable groupId="language" instance="com.ky_proj.spjplugin.setting.SpjSettingsConfigurable"/>
     </extensions>
 
 
