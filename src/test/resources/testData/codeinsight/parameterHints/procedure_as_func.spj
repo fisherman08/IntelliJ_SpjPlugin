@@ -1,0 +1,5 @@
+result =  test:proc(hash_array, "hoge", array.make(), 8)
+
+[test:proc(varname, string, func. number)]
+
+return(dummy)
