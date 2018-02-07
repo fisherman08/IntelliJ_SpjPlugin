@@ -18,9 +18,9 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="icon.svg"
-   inkscape:export-filename="E:\my documents\My Pictures\IntelliJ_SpjPlugin\icons\icon_spj@2x.png"
-   inkscape:export-xdpi="9"
-   inkscape:export-ydpi="9">
+   inkscape:export-filename="E:\my documents\My Pictures\IntelliJ_SpjPlugin\icons\icon_spj.png"
+   inkscape:export-xdpi="4.5"
+   inkscape:export-ydpi="4.5">
   <defs
      id="defs4">
     <linearGradient
@@ -61,8 +61,8 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.2637923"
-     inkscape:cx="223.45876"
-     inkscape:cy="146.83008"
+     inkscape:cx="150.79065"
+     inkscape:cy="135.75802"
      inkscape:document-units="px"
      inkscape:current-layer="g4803"
      showgrid="false"
@@ -151,7 +151,7 @@
        x="67.156319"
        y="121.34224" />
     <ellipse
-       style="opacity:1;fill:#fff200;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:#ffd500;fill-opacity:0.70526315;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path4793"
        cx="158.67479"
        cy="157.57045"
@@ -219,10 +219,10 @@
        style="opacity:1;fill:#556b2f;fill-opacity:0;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <path
        style="display:inline;opacity:1;fill:url(#linearGradient5980);fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 317.47911,160 c 0,48.30495 -70.5058,87.46385 -157.47911,87.46385 -30.54354,0 -77.479472,-5.9888 -108.680446,-22.58407 C 9.4194906,202.59385 -3.3375291,166.3374 8.2373292,181.59496 c 9.6161488,12.67567 27.7256848,23.0161 49.0807258,32.19704 34.262936,14.73029 76.168285,19.85886 99.941385,19.90588 0.74692,0.001 1.47594,-0.002 2.18626,-0.0105 43.61923,-0.51675 104.50384,-10.59831 122.77136,-26.19994 9.58725,-8.18813 28.92933,-21.06851 32.19643,-50.06927 -3.87619,-33.09566 -16.14087,-35.802 -25.30412,-45.94214 -15.22761,-9.66424 -44.58256,-19.462267 -71.60687,-24.598255 -11.13827,-2.116835 -20.11367,-3.883828 -29.30781,-4.69982 -13.12449,-1.164818 -24.8611,-0.850163 -28.32412,-0.760708 -4.32494,0.11172 -13.79778,-0.293087 -23.0071,0.494037 -20.71019,1.77011 -47.256622,5.98364 -61.820452,10.208474 C 37.082972,103.13162 5.1137791,147.09872 5.6130458,145.42269 18.423407,102.41858 73.027572,72.928111 160,72.536148 258.01673,72.094411 317.47911,111.69505 317.47911,160 Z"
+       d="m 317.47911,160 c 0,48.30495 -70.5058,87.46385 -157.47911,87.46385 -30.54354,0 -77.479472,-5.9888 -108.680446,-22.58407 C 9.4194906,202.59385 -3.3375291,166.3374 8.2373292,181.59496 c 9.6161488,12.67567 25.2961328,25.00391 45.5468328,35.06833 33.434998,16.77709 58.890608,16.39505 105.661538,17.90756 47.92616,1.2502 104.50384,-11.48178 122.77136,-27.08341 9.58725,-8.18813 33.20622,-23.58725 33.93333,-47.50804 -1.72051,-19.22688 -7.67666,-33.60252 -23.3967,-45.85294 -15.22761,-9.66425 -38.06694,-23.437907 -76.5764,-29.015632 -19.52427,-2.714934 -36.19745,-4.20501 -56.30672,-3.693581 -4.32494,0.11172 -13.79778,-0.293087 -23.0071,0.494037 -20.71019,1.77011 -47.256622,5.98364 -61.820452,10.208474 C 37.082972,103.13162 5.1137791,147.09872 5.6130458,145.42269 18.423407,102.41858 73.027572,72.928111 160,72.536148 258.01673,72.094411 317.47911,111.69505 317.47911,160 Z"
        id="path4886"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ssssssssccssssssss"
+       sodipodi:nodetypes="ssssccsccccsssss"
        inkscape:export-filename="E:\my documents\My Pictures\IntelliJ_SpjPlugin\logo.png"
        inkscape:export-xdpi="91.922058"
        inkscape:export-ydpi="91.922058" />
