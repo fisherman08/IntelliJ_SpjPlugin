@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>com.ky-proj.spjplugin</id>
     <name>Spj Plugin</name>
-    <version>1.1.0</version>
+    <version>1.5.0</version>
     <vendor url="https://github.com/fisherman08/IntelliJ_SpjPlugin">Y.Kaneko</vendor>
 
     <description><![CDATA[
@@ -17,7 +17,7 @@
         <li>Structure view</li>
       </ul>
 
-      Get more information at <a href="https://github.com/fisherman08/IntelliJ_SpjPlugin">GitHub</a>
+      Get more information at GitHub <a href="https://github.com/fisherman08/IntelliJ_SpjPlugin">https://github.com/fisherman08/IntelliJ_SpjPlugin</a>
 
 
       This plugin includes the work that is distributed in the Apache License 2.0
@@ -27,13 +27,13 @@
     <change-notes><![CDATA[
       (2018/02/xx) v1.5.0: Support "try" blocks of Neo4.<br/><br/>
 
-      For older change notes, See <a href="https://github.com/fisherman08/IntelliJ_SpjPlugin">GitHub</a>.
+      For older change notes, See GitHub <a href="https://github.com/fisherman08/IntelliJ_SpjPlugin">https://github.com/fisherman08/IntelliJ_SpjPlugin</a>.
     ]]>
     </change-notes>
 
 
 
-    <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
     <idea-version since-build="171"/>
 
     <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
@@ -77,9 +77,9 @@
 
         <lang.foldingBuilder language="spj" implementationClass="com.ky_proj.spjplugin.folding.SpjFoldingBuilder"/>
 
-        <!--&lt;!&ndash;live template&ndash;&gt;-->
-        <!--<defaultLiveTemplatesProvider implementation="com.ky_proj.spjplugin.template.SpjTemplateProvider"/>-->
-        <!--<liveTemplateContext implementation="com.ky_proj.spjplugin.template.SpjTemplateContextType"/>-->
+        <!--live template-->
+        <defaultLiveTemplatesProvider implementation="com.ky_proj.spjplugin.template.SpjTemplateProvider"/>
+        <liveTemplateContext implementation="com.ky_proj.spjplugin.template.SpjTemplateContextType"/>
 
 
 
@@ -100,9 +100,9 @@
 
     <project-components>
         <!-- Add your project components here -->
-        <!--<component>-->
-            <!--<implementation-class>com.ky_proj.spjplugin.SpjProjectComponent</implementation-class>-->
-        <!--</component>-->
+        <component>
+            <implementation-class>com.ky_proj.spjplugin.projectcomponent.SpjProjectComponent</implementation-class>
+        </component>
     </project-components>
 
     <actions>
