@@ -2,10 +2,10 @@
     <id>com.ky-proj.spjplugin</id>
     <name>Spj Plugin</name>
     <version>1.5.0</version>
-    <vendor url="https://github.com/fisherman08/IntelliJ_SpjPlugin">Y.Kaneko</vendor>
+    <vendor>Y.Kaneko</vendor>
 
     <description><![CDATA[
-      <h2>Custom language plugin for 101NEO framework.</h2><br>
+      <h2>A Plugin For IntelliJ Family IDEs to Develop 101NEO SPJ Language</h2><br>
 
       This plugin is the most sophisticated environment for developing 101NEO framework.<br><br>
       Functions:
@@ -16,16 +16,20 @@
         <li>basic code formatting and indent</li>
         <li>Structure view</li>
       </ul>
-
+      <br/>
       Get more information at GitHub <a href="https://github.com/fisherman08/IntelliJ_SpjPlugin">https://github.com/fisherman08/IntelliJ_SpjPlugin</a>
-
-
+      <br/>
+      <br/>
       This plugin includes the work that is distributed in the Apache License 2.0
 
     ]]></description>
 
     <change-notes><![CDATA[
-      (2018/02/xx) v1.5.0: Support "try" blocks of Neo4.<br/><br/>
+      (2018/02/11) v1.5.0:<br/><br/>
+
+      Improve auto completions.<br/>
+      Add parameter hints.<br/>
+      Whole project rewritten in Kotlin language.<br/><br/>
 
       For older change notes, See GitHub <a href="https://github.com/fisherman08/IntelliJ_SpjPlugin">https://github.com/fisherman08/IntelliJ_SpjPlugin</a>.
     ]]>
