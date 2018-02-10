@@ -6,20 +6,15 @@ A Plugin For IntelliJ Family IDEs to Develop 101NEO SPJ Language
 [![Build Status](https://travis-ci.org/fisherman08/IntelliJ_SpjPlugin.svg?branch=master)](https://travis-ci.org/fisherman08/IntelliJ_SpjPlugin)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/fisherman08/IntelliJ_SpjPlugin/blob/master/LICENSE)
 
-## !! IMPORTANT NOTICE !!
 
-This repository is being migrated from another repository with a legacy Java codes,
-and some parts of the codes may not be working so far.
+## About
+
+Custom language plugin for 101NEO framework. 
+This plugin is the most sophisticated environment for developing 101NEO framework. 
 
 If you would like to obtain a stable version of the plugin, just get one from the plugin repository inside you IDE.
 or download one from [JetBrain's website](https://plugins.jetbrains.com/plugin/8042-spj-plugin).
 
-
-## About
-
-
-Custom language plugin for 101NEO framework. 
-This plugin is the most sophisticated environment for developing 101NEO framework. 
 
 ### Functions
 
@@ -34,7 +29,7 @@ This plugin is the most sophisticated environment for developing 101NEO framewor
 
 | Date | Version | Release Details|
 |:-------------:|:------:|:------------------------------|
-| 2018/02/xx | v1.5.0 | Improve auto competions. <br/> Add parameter hints. <br/> Whole project rewritten in Kotlin language |
+| 2018/02/xx | v1.5.0 | Improve auto completions. <br/> Add parameter hints. <br/> Whole project rewritten in Kotlin language. |
 | 2017/05/25 | v1.1.0 | Support "try" blocks of Neo4. |
 | 2017/05/07 | v1.0.6 | Add some annotations.  |
 | 2017/04/03 | v1.0.5 | Add Completion for SpjDocs.|
