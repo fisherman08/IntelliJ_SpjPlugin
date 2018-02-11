@@ -51,6 +51,7 @@ compileTestKotlin {
 
 intellij {
     version '2017.1'
+    updateSinceUntilBuild false
     pluginName "Intellij_SpjPlugin"
 }
 
