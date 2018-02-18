@@ -29,7 +29,7 @@ or download one from [JetBrain's website](https://plugins.jetbrains.com/plugin/8
 
 | Date | Version | Release Details|
 |:-------------:|:------:|:------------------------------|
-| 2018/02/xx | v1.5.0 | Improve auto completions. <br/> Add parameter hints. <br/> Whole project rewritten in Kotlin language. |
+| 2018/02/11 | v1.5.0 | Improve auto completions. <br/> Add parameter hints. <br/> Whole project rewritten in Kotlin language. |
 | 2017/05/25 | v1.1.0 | Support "try" blocks of Neo4. |
 | 2017/05/07 | v1.0.6 | Add some annotations.  |
 | 2017/04/03 | v1.0.5 | Add Completion for SpjDocs.|
