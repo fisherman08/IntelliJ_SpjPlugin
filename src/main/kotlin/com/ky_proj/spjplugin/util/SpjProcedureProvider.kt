@@ -81,7 +81,7 @@ object SpjProcedureProvider {
 
         for (def in list) {
             val procedureName = def.node?.findChildByType(SpjTypes.PROCEDURE)?.text ?: ""
-            if(name.equals(procedureName)){
+            if(name == procedureName){
                 result.add(def)
             }
         }

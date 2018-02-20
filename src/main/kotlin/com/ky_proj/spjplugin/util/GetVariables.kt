@@ -26,8 +26,6 @@ class GetVariables(file: PsiFile) {
             return result.toTypedArray()
         }
 
-
-
     private fun getChildVariables(result: MutableList<String>, node: ASTNode) {
 
         val type = node.elementType

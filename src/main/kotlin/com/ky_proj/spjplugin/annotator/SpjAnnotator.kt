@@ -74,8 +74,7 @@ class SpjAnnotator : Annotator {
 
     // 定義済みプロシージャ呼び出しの時に引数の個数を数える
     private fun annotateArgumentsCount(element: PsiElement, holder: AnnotationHolder, def: SpjProcedureDef, caller: PsiElement) {
-        val setting = SpjSetting(element.project)
-        val neoVersion = setting.getNeoVersion()
+        val neoVersion = SpjSetting(element.project).getNeoVersion()
 
         val arg_count_defined = getArgsCount(def)
         val arg_count_called  = getArgsCount(caller)

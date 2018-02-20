@@ -50,7 +50,7 @@ class SpjStructureViewElement(private val element: PsiElement) : StructureViewTr
         if (element is PsiNamedElement && element.name != null) {
             result = element.name
         }
-        return if (result != null) result else ""
+        return result ?:""
     }
 
     override fun getPresentation(): ItemPresentation {

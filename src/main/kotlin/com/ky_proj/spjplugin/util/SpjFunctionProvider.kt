@@ -3,7 +3,6 @@ package com.ky_proj.spjplugin.util
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.util.containers.concat
 import com.ky_proj.spjplugin.psi.SpjCallingFunction
 import com.ky_proj.spjplugin.psi.SpjPsiUtil
 import com.ky_proj.spjplugin.psi.SpjTypes
