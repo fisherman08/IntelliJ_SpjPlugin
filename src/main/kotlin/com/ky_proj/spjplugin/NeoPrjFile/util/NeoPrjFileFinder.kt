@@ -55,7 +55,7 @@ class NeoPrjFileFinder(private val current_project: Project) {
         var result: NeoPrjFileFile? = null
         val virtualFiles = allProjectFiles
 
-        val project_root = current_project?.presentableUrl ?: ""
+        val project_root = current_project.presentableUrl ?: ""
 
         for (virtualFile in virtualFiles) {
             // ページごとに取得する
