@@ -11,19 +11,21 @@ import com.ky_proj.spjplugin.psi.SpjTypes
  * Created on 2018/01/20.
  */
 object SpjFunctionProvider{
-    private var hiddenList :Array<PsiElement> = ArrayList<PsiElement>().toTypedArray()
+    private var hiddenList :Array<PsiElement> = arrayOf()
+    private var projectForList :Project? = null
 
     /**
      * 組み込み関数のリストを返す。
      * 高速化のためにシングルトンなので受け取った側でリストの中身を操作されると詰むので気をつけよう。
      */
     fun list(project: Project) :Array<PsiElement>{
-        if(hiddenList.isNotEmpty())
+        if(hiddenList.isNotEmpty() && !(projectForList?.isDisposed ?:true))
             return hiddenList
 
         val file = SpjPsiUtil.createSpjFilewithResource(project, "/builtin/functions.spj")
         hiddenList = PsiTreeUtil.findChildrenOfType(file, SpjCallingFunction::class.java).toTypedArray()
 
+        projectForList = project
         return hiddenList
     }
 
