@@ -29,6 +29,7 @@ or download one from [JetBrain's website](https://plugins.jetbrains.com/plugin/8
 
 | Date | Version | Release Details|
 |:-------------:|:------:|:------------------------------|
+| 2018/03/11 | v1.5.1 | Fixed some issues.  |
 | 2018/02/11 | v1.5.0 | Improve auto completions. <br/> Add parameter hints. <br/> Whole project rewritten in Kotlin language. |
 | 2017/05/25 | v1.1.0 | Support "try" blocks of Neo4. |
 | 2017/05/07 | v1.0.6 | Add some annotations.  |
