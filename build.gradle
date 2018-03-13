@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.2.20'
+    ext.kotlin_version = '1.2.21'
 
     repositories {
         maven {
@@ -62,6 +62,12 @@ sourceSets {
 
     test {
         java { srcDir 'src/main/gen' }
+    }
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
     }
 }
 
