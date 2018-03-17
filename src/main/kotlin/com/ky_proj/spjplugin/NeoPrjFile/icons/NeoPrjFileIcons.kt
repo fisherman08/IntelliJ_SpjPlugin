@@ -6,5 +6,6 @@ package com.ky_proj.spjplugin.NeoPrjFile.icons
 import com.intellij.openapi.util.IconLoader
 
 object NeoPrjFileIcons {
-    val FILE = IconLoader.getIcon("/icons/icon_prj.png")
+    val FileName = "/icons/icon_prj.png"
+    val FILE = IconLoader.getIcon(FileName)
 }
