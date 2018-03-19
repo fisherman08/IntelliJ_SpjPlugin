@@ -30,7 +30,6 @@ class NeoPrjFileFinder(private val current_project: Project) {
         get() = FileTypeIndex.getFiles(NeoPrjFileFileType.INSTANCE, GlobalSearchScope.allScope(current_project))
 
     // ページごとに取得する
-    //filename = filename.replaceAll("¥¥", "¥¥¥¥");
     val allProjectFileNamesFromProjectRoot: Array<String>
         get() {
             val virtualFiles = allProjectFiles
@@ -62,7 +61,7 @@ class NeoPrjFileFinder(private val current_project: Project) {
             val file = PsiManager.getInstance(current_project).findFile(virtualFile) as NeoPrjFileFile? ?: continue
 
             var filename = virtualFile.presentableUrl
-            //filename = filename.replaceAll("¥¥", "¥¥¥¥");
+
             filename = filename.replaceFirst(Pattern.quote(projectRoot).toRegex(), "")
             filename = filename.substring(1)
             if (filename == path) {
