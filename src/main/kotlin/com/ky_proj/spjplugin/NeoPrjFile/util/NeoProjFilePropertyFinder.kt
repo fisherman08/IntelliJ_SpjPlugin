@@ -5,24 +5,24 @@ import com.ky_proj.spjplugin.NeoPrjFile.psi.NeoPrjFileFile
 import com.ky_proj.spjplugin.NeoPrjFile.psi.NeoPrjFileProperty
 import com.ky_proj.spjplugin.NeoPrjFile.psi.NeoPrjFileTypes
 
-class NeoPrjFilePropertyFinder(internal var myFile: NeoPrjFileFile) {
+class NeoPrjFilePropertyFinder(private val myFile: NeoPrjFileFile) {
 
-    fun getValue(name_in: String): String {
-        var result = ""
-        val props = PsiTreeUtil.getChildrenOfType(myFile, NeoPrjFileProperty::class.java) ?: return result
-        for (pros in props) {
+    fun getValue(propertyName: String): String {
 
-            val key = pros.node.findChildByType(NeoPrjFileTypes.KEY) ?: continue
+        val allProperties = PsiTreeUtil.getChildrenOfType(myFile, NeoPrjFileProperty::class.java) ?: return ""
+        for (property in allProperties) {
 
-            if (key.text == name_in) {
-                val value = pros.node.findChildByType(NeoPrjFileTypes.VALUE)
-                if (value != null) {
-                    result = value.text
-                }
-                break
+            val key = property.node.findChildByType(NeoPrjFileTypes.KEY) ?: continue
+            if (key.text != propertyName) {
+                // keyが違う
+                continue
             }
+
+            // keyが一致していたらvalueを返す
+            return property.node.findChildByType(NeoPrjFileTypes.VALUE)?.text ?: ""
         }
 
-        return result
+        // 一致するkeyが存在しない
+        return ""
     }
 }
