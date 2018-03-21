@@ -23,22 +23,7 @@ class SpjCompletionContributor : CompletionContributor() {
     init {
 
         // コマンド
-        extend(CompletionType.BASIC,
-                PlatformPatterns.psiElement(SpjTypes.COMMAND_CALL).withLanguage(SpjLanguage.INSTANCE),
-                object : CompletionProvider<CompletionParameters>() {
-                    public override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, resultSet: CompletionResultSet) {
-                        val list = SpjCommandProvider.list(parameters.originalFile.project)
-                        list.forEach { command ->
-                            val element = LookupElementBuilder.create(command, command.node.text)
-                                    .withTypeText("built in command", true)
-                                    .withInsertHandler(CommandInsertHandler())
-                                    .withIcon(SpjIcon.COMMAND)
-                            resultSet.addElement(element)
-                        }
-                    }
-                }
-        )
-
+        addNeoCommands(SpjTypes.COMMAND_CALL)
 
         // 変数
         addFunctions(SpjTypes.VARIABLE)
@@ -71,7 +56,7 @@ class SpjCompletionContributor : CompletionContributor() {
 
                         // @example
                         val procedureName = procedureDefinition.findChildByType(SpjTypes.PROCEDURE)?.text ?: return
-                        val arguments :ASTNode? = procedureDefinition.findChildByType(SpjTypes.ARGUMENTS)
+                        val arguments: ASTNode? = procedureDefinition.findChildByType(SpjTypes.ARGUMENTS)
                         val argumentsText = arguments?.text ?: "()"
 
                         resultSet.addElement(LookupElementBuilder.create("@example perform " + procedureName + argumentsText))
@@ -80,7 +65,7 @@ class SpjCompletionContributor : CompletionContributor() {
                         if (arguments != null) {
                             val ags = PsiTreeUtil.findChildrenOfType(arguments.psi, SpjArgs::class.java)
                             for (ag in ags) {
-                                if(! ag.text.isEmpty()){
+                                if (!ag.text.isEmpty()) {
                                     resultSet.addElement(LookupElementBuilder.create("@param " + ag.text + " "))
                                 }
 
@@ -97,12 +82,34 @@ class SpjCompletionContributor : CompletionContributor() {
     }
 
     /**
-        指定されたタイプのcompletionにNeoの組み込み関数と、関数形式で呼び出せる定義済みプロシージャを加える
+     * Neoの組み込みコマンドを追加する
      */
-    private fun addFunctions(elementtype :IElementType){
+    private fun addNeoCommands(type: IElementType) {
+        extend(CompletionType.BASIC,
+                PlatformPatterns.psiElement(type).withLanguage(SpjLanguage.INSTANCE),
+                object : CompletionProvider<CompletionParameters>() {
+                    public override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, resultSet: CompletionResultSet) {
+                        val list = SpjCommandProvider.list(parameters.originalFile.project)
+                        list.forEach { command ->
+                            val element = LookupElementBuilder.create(command, command.node.text)
+                                    .withTypeText("built in command", true)
+                                    .withInsertHandler(CommandInsertHandler())
+                                    .withIcon(SpjIcon.COMMAND)
+                            resultSet.addElement(element)
+                        }
+                    }
+                }
+        )
+    }
+
+
+    /**
+    指定されたタイプのcompletionにNeoの組み込み関数と、関数形式で呼び出せる定義済みプロシージャを加える
+     */
+    private fun addFunctions(type: IElementType) {
         // neoの組み込み関数
         extend(CompletionType.BASIC,
-                PlatformPatterns.psiElement(elementtype).withLanguage(SpjLanguage.INSTANCE),
+                PlatformPatterns.psiElement(type).withLanguage(SpjLanguage.INSTANCE),
                 object : CompletionProvider<CompletionParameters>() {
                     public override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, resultSet: CompletionResultSet) {
                         // 組み込み関数
@@ -120,7 +127,10 @@ class SpjCompletionContributor : CompletionContributor() {
 
     }
 
-    private fun addVariablesAndArguments(type :IElementType){
+    /**
+     *  同じファイル内の変数と引数を追加する
+     */
+    private fun addVariablesAndArguments(type: IElementType) {
         extend(CompletionType.BASIC,
                 PlatformPatterns.psiElement(type).withLanguage(SpjLanguage.INSTANCE),
                 object : CompletionProvider<CompletionParameters>() {
@@ -138,8 +148,10 @@ class SpjCompletionContributor : CompletionContributor() {
 
     }
 
+    /**
+     * ユーザー定義プロシージャを追加する
+     */
     private fun addProcedures(type: IElementType, onlyWithReturn: Boolean) {
-
         extend(CompletionType.BASIC,
                 PlatformPatterns.psiElement(type).withLanguage(SpjLanguage.INSTANCE),
                 object : CompletionProvider<CompletionParameters>() {
@@ -147,8 +159,8 @@ class SpjCompletionContributor : CompletionContributor() {
                         val project = parameters.originalFile.project
                         val setting = SpjSetting(project)
 
-                        if (!setting.isEnhanceMode() && type != SpjTypes.PROCEDURE_CALL )
-                            // EnhanceModeじゃなければ関数形式の呼び出しには対応させない
+                        if (!setting.isEnhanceMode() && type != SpjTypes.PROCEDURE_CALL)
+                        // EnhanceModeじゃなければ関数形式の呼び出しには対応させない
                             return
 
                         val procedures = SpjProcedureProvider.listInProject(project, onlyWithReturn)

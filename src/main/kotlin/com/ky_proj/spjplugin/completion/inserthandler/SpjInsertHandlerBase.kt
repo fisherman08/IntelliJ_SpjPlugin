@@ -19,7 +19,6 @@ open class SpjInsertHandlerBase : InsertHandler<LookupElement> {
         val commandName = node.findChildByType(TokenSet.create(SpjTypes.COM_CALL, SpjTypes.FUNCTION, SpjTypes.PROCEDURE))?.text ?: return
 
         // 引数の定義があるならそこにcaretを移動する
-
         val arguments = node.findChildByType(SpjTypes.ARGUMENTS) ?:return
         val startOffset = context.startOffset + commandName.length + "(".length
         editor.caretModel.moveToOffset(startOffset)
