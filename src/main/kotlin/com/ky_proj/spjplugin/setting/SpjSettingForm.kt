@@ -6,11 +6,8 @@ import com.ky_proj.spjplugin.NeoPrjFile.util.NeoPrjFileFinder
 import javax.swing.JPanel
 
 class SpjSettingForm(private val setting :SpjSetting) {
-    private val rootPanel: JPanel? = null
-    private val box_neo_version:   ComboBox<Float> = ComboBox<Float>(200)
-    private val box_neo_prj_files: ComboBox<String> = ComboBox<String>(200)
-
-    private val is_modified = false
+    private val boxNeoVersion:   ComboBox<Float> = ComboBox<Float>(200)
+    private val boxNeoPrjFiles: ComboBox<String> = ComboBox<String>(200)
 
     init {
         // NEOのバージョンを設定
@@ -21,22 +18,22 @@ class SpjSettingForm(private val setting :SpjSetting) {
 
     private fun createNeoVersion() {
         for (ver in arrayOf(2.0f, 3.0f, 4.0f)) {
-            box_neo_version.addItem(ver)
+            boxNeoVersion.addItem(ver)
         }
 
         this.setNeoVersion(setting)
     }
 
     fun setNeoVersion(setting: SpjSetting) {
-        val itemCount = box_neo_version.getItemCount()
+        val itemCount = boxNeoVersion.getItemCount()
         // 初期選択
 
-        val current_version = setting.getNeoVersion()
+        val projectNeoVersion = setting.getNeoVersion()
         for (i in 0 until itemCount) {
-            val ver = box_neo_version.getItemAt(i) as Float
+            val ver = boxNeoVersion.getItemAt(i) as Float
             // 初期選択
-            if (ver == current_version) {
-                box_neo_version.setSelectedItem(ver)
+            if (ver == projectNeoVersion) {
+                boxNeoVersion.setSelectedItem(ver)
             }
         }
     }
@@ -45,29 +42,27 @@ class SpjSettingForm(private val setting :SpjSetting) {
      * プロジェクト内にいるprjファイルのリストを返す
      */
     private fun createNeoProjectFile() {
-        val current_project = setting.getCurrentProject()
-
         // defaultで空文字を入れてあげる
-        box_neo_prj_files.addItem("")
+        boxNeoPrjFiles.addItem("")
 
-        val project_files = NeoPrjFileFinder(setting.getCurrentProject()).allProjectFileNamesFromProjectRoot
-        for (project_file in project_files) {
-            box_neo_prj_files.addItem(project_file)
+        val allPrjFiles = NeoPrjFileFinder(setting.getCurrentProject()).allProjectFileNamesFromProjectRoot
+        for (priFile in allPrjFiles) {
+            boxNeoPrjFiles.addItem(priFile)
         }
 
         this.setNeoProjectFile(setting)
     }
 
     fun setNeoProjectFile(setting: SpjSetting) {
-        val itemCount = box_neo_prj_files.getItemCount()
+        val itemCount = boxNeoPrjFiles.itemCount
         // 初期選択
-        val project_file_path = setting.getProjecFilePath() ?: return
+        val prjFilePath = setting.getProjecFilePath() ?: return
 
         for (i in 0 until itemCount) {
-            val prj = box_neo_prj_files.getItemAt(i) as String
+            val prj = boxNeoPrjFiles.getItemAt(i) as String
             // 初期選択
-            if (prj == project_file_path) {
-                box_neo_prj_files.setSelectedItem(prj)
+            if (prj == prjFilePath) {
+                boxNeoPrjFiles.selectedItem = prj
             }
         }
     }
@@ -77,21 +72,21 @@ class SpjSettingForm(private val setting :SpjSetting) {
             row {
                 // child components
                 label("Project NEO Version", 10, bold = true)
-                box_neo_version()
+                boxNeoVersion()
             }
             row {
                 label("Project NEO .prj File", 10, bold = true)
-                box_neo_prj_files()
+                boxNeoPrjFiles()
             }
         }
     }
 
     fun isModified(): Boolean {
         val original_version = setting.getNeoVersion()
-        val current_version = box_neo_version.selectedItem as Float
+        val current_version = boxNeoVersion.selectedItem as Float
 
         val original_path = setting.getProjecFilePath()
-        val current_path = box_neo_prj_files.selectedItem as String
+        val current_path = boxNeoPrjFiles.selectedItem as String
 
 
         return (original_version != current_version || original_path != current_path)
@@ -100,8 +95,8 @@ class SpjSettingForm(private val setting :SpjSetting) {
     // 結果を取得
     fun getResult(): SpjSetting {
         // バージョン
-        setting.setNeoVersion(box_neo_version.selectedItem as  Float)
-        setting.setNeoProjectFilePath(box_neo_prj_files.selectedItem as String)
+        setting.setNeoVersion(boxNeoVersion.selectedItem as  Float)
+        setting.setNeoProjectFilePath(boxNeoPrjFiles.selectedItem as String)
 
         return setting
     }
