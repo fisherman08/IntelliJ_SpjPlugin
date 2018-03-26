@@ -67,7 +67,7 @@ class SpjProjectComponent(private val myProject: Project) : ProjectComponent {
         val setting = SpjSetting(myProject)
 
         // prjファイルが指定されていなかったらアラートを出す
-        if (setting.getProjecFilePath() == null || setting.getProjecFilePath() == "") {
+        if (setting.getProjectFilePath() == null || setting.getProjectFilePath() == "") {
             Notifications.Bus.notify(
                     Notification("SpjPlugin",
                             "SpjPlugin: .prj file is not specified",

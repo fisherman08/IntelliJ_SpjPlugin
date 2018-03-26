@@ -66,7 +66,7 @@ class SpjSetting(val project :Project){
         return neo_version
     }
 
-    fun getProjecFilePath(): String {
+    fun getProjectFilePath(): String {
         return projectFilePath
     }
 
