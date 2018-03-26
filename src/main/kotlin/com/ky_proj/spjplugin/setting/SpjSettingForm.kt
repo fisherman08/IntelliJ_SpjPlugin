@@ -56,7 +56,7 @@ class SpjSettingForm(private val setting :SpjSetting) {
     fun setNeoProjectFile(setting: SpjSetting) {
         val itemCount = boxNeoPrjFiles.itemCount
         // 初期選択
-        val prjFilePath = setting.getProjecFilePath() ?: return
+        val prjFilePath = setting.getProjectFilePath() ?: return
 
         for (i in 0 until itemCount) {
             val prj = boxNeoPrjFiles.getItemAt(i) as String
@@ -82,14 +82,14 @@ class SpjSettingForm(private val setting :SpjSetting) {
     }
 
     fun isModified(): Boolean {
-        val original_version = setting.getNeoVersion()
-        val current_version = boxNeoVersion.selectedItem as Float
+        val originalVersion = setting.getNeoVersion()
+        val currentVersion = boxNeoVersion.selectedItem as Float
 
-        val original_path = setting.getProjecFilePath()
-        val current_path = boxNeoPrjFiles.selectedItem as String
+        val originalPath = setting.getProjectFilePath()
+        val currentPath = boxNeoPrjFiles.selectedItem as String
 
 
-        return (original_version != current_version || original_path != current_path)
+        return (originalVersion != currentVersion || originalPath != currentPath)
     }
 
     // 結果を取得

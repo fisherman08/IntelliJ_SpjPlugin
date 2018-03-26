@@ -21,7 +21,7 @@ class NeoPrjFileFinder(private val current_project: Project) {
         get() {
 
             val setting = SpjSetting(current_project)
-            val projectFilePath = setting.getProjecFilePath()
+            val projectFilePath = setting.getProjectFilePath()
 
             return this.getProjectFileFromPathString(projectFilePath)
         }
