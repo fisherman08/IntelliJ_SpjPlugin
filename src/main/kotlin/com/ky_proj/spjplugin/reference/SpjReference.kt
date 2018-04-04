@@ -105,26 +105,12 @@ class SpjReference(element: PsiElement) : PsiReferenceBase<PsiElement>(element, 
 
     override fun getVariants(): Array<Any> {
         val project = myElement.project
-        //List<SpjProperty> properties = SpjUtil.findProperties(project);
-        //List<LookupElement> variants = new ArrayList<LookupElement>();
-        //List<SpjProcedureDef> defs = SpjUtil.GET_PROCS.getProcDefs(project);
         return  ArrayList<Any>().toTypedArray()
     }
 
     @Throws(IncorrectOperationException::class)
     override fun handleElementRename(newElementName: String): PsiElement {
-        /*if (newElementName.endsWith(PropertiesFileType.DOT_DEFAULT_EXTENSION)) {
-            newElementName = newElementName.substring(0, newElementName.lastIndexOf(PropertiesFileType.DOT_DEFAULT_EXTENSION));
-        }
 
-        final String currentValue = getValue();
-        final char packageDelimiter = getPackageDelimiter();
-        final int index = currentValue.lastIndexOf(packageDelimiter);
-        if (index != -1) {
-            newElementName = currentValue.substring(0, index) + packageDelimiter + newElementName;
-        }
-
-        return super.handleElementRename(newElementName);*/
         return myElement
     }
 }
