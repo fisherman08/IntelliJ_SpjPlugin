@@ -22,5 +22,6 @@ class NeoPrjFilePropertyFinderTest :SpjTestCase() {
         val file = getPsiFile("propertyfinder.prj")
         val finder = NeoPrjFilePropertyFinder(file!! as NeoPrjFileFile)
         TestCase.assertEquals("", finder.getValue("TheMeaningOfLife"))
+        TestCase.assertEquals("", finder.getValue("emptyProp"))
     }
 }
