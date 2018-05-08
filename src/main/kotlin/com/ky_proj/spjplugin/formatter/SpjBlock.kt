@@ -12,7 +12,8 @@ import com.ky_proj.spjplugin.psi.SpjTypes.*
 import java.util.ArrayList
 
 class SpjBlock constructor(node: ASTNode, wrap: Wrap?, alignment: Alignment?, private val spacingBuilder: SpacingBuilder) : AbstractBlock(node, wrap, alignment) {
-    private val myIndent: Indent
+
+    private val myIndent: Indent = SpjIndentProcessor().getChildIndent(node)
 
     private val firstChildAlignment: Alignment?
         get() {
@@ -26,22 +27,20 @@ class SpjBlock constructor(node: ASTNode, wrap: Wrap?, alignment: Alignment?, pr
             return null
         }
 
-    init {
-
-        myIndent = SpjIndentProcessor().getChildIndent(node)
-    }
-
     override fun buildChildren(): List<Block> {
         val blocks = ArrayList<Block>()
         if (isLeaf) {
             return blocks
         }
+
         if (myNode.elementType === TokenType.ERROR_ELEMENT || myNode.elementType === TokenType.WHITE_SPACE) {
             return blocks
         }
+
         if (myNode.textRange.length == 0) {
             return blocks
         }
+
         var child: ASTNode? = myNode.firstChildNode
         var previousChild: ASTNode? = null
         while (child != null) {
@@ -57,7 +56,6 @@ class SpjBlock constructor(node: ASTNode, wrap: Wrap?, alignment: Alignment?, pr
     }
 
     override fun getIndent(): Indent? {
-        val parent = myNode.treeParent
         return myIndent
     }
 

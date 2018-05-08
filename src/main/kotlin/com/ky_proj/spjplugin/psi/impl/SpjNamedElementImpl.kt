@@ -5,12 +5,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
 import com.intellij.util.IncorrectOperationException
-import com.intellij.psi.PsiReference
 import com.intellij.psi.tree.IElementType
-import com.ky_proj.spjplugin.psi.SpjElementType
-
-import com.ky_proj.spjplugin.psi.SpjNamedElement
-import com.ky_proj.spjplugin.psi.SpjProcedureDef
 import com.ky_proj.spjplugin.psi.SpjTypes
 import com.ky_proj.spjplugin.reference.SpjReference
 

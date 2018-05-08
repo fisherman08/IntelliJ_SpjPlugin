@@ -15,7 +15,7 @@ class SpjReference(element: PsiElement) : PsiReferenceBase<PsiElement>(element, 
     override fun multiResolve(incompleteCode: Boolean): Array<ResolveResult> {
 
        if (myResolveResults != null) {
-            // すでにキャッシュされてるものがあってかつ全てが有効なららそれを返す。
+            // すでにキャッシュされてるものがあってかつ全てが有効ならそれを返す。
             var is_cache_valid = true
             for (res in myResolveResults!!) {
                 val element = res.element
@@ -104,8 +104,7 @@ class SpjReference(element: PsiElement) : PsiReferenceBase<PsiElement>(element, 
     }
 
     override fun getVariants(): Array<Any> {
-        val project = myElement.project
-        return  ArrayList<Any>().toTypedArray()
+        return  emptyArray()
     }
 
     @Throws(IncorrectOperationException::class)
