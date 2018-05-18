@@ -65,6 +65,7 @@
         <codeInsight.parameterNameHints language="spj" implementationClass="com.ky_proj.spjplugin.codeinsight.SpjInlayParameterHintsProvider" />
 
         <lang.braceMatcher language="spj" implementationClass="com.ky_proj.spjplugin.completion.SpjBraceMatcher"/>
+        <lang.quoteHandler language="spj" implementationClass="com.ky_proj.spjplugin.codeinsight.SpjQuoteHandler"/>
 
         <problemFileHighlightFilter implementation="com.ky_proj.spjplugin.highlight.SpjProblemFileHighlightFilter"/>
 
