@@ -1,5 +1,6 @@
 package com.ky_proj.spjplugin.NeoPrjFile.util
 
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiManager
@@ -27,7 +28,15 @@ class NeoPrjFileFinder(private val current_project: Project) {
         }
 
     private val allProjectFiles: Collection<VirtualFile>
-        get() = FileTypeIndex.getFiles(NeoPrjFileFileType.INSTANCE, GlobalSearchScope.allScope(current_project))
+        get() {
+
+            return if(ApplicationManager.getApplication().isReadAccessAllowed) {
+                FileTypeIndex.getFiles(NeoPrjFileFileType.INSTANCE, GlobalSearchScope.allScope(current_project))
+            } else {
+                listOf()
+            }
+
+        }
 
     // ページごとに取得する
     val allProjectFileNamesFromProjectRoot: Array<String>
