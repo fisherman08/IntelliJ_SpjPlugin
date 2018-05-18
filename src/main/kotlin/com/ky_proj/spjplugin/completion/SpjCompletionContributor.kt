@@ -59,14 +59,14 @@ class SpjCompletionContributor : CompletionContributor() {
                         val arguments: ASTNode? = procedureDefinition.findChildByType(SpjTypes.ARGUMENTS)
                         val argumentsText = arguments?.text ?: "()"
 
-                        resultSet.addElement(LookupElementBuilder.create("@example perform " + procedureName + argumentsText))
+                        resultSet.addElement(LookupElementBuilder.create("@example perform $procedureName$argumentsText"))
 
                         // @param
                         if (arguments != null) {
                             val ags = PsiTreeUtil.findChildrenOfType(arguments.psi, SpjArgs::class.java)
                             for (ag in ags) {
                                 if (!ag.text.isEmpty()) {
-                                    resultSet.addElement(LookupElementBuilder.create("@param " + ag.text + " "))
+                                    resultSet.addElement(LookupElementBuilder.create("@param ${ag.text} "))
                                 }
 
                             }

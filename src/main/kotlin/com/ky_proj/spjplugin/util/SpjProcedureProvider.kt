@@ -25,6 +25,7 @@ object SpjProcedureProvider {
             "init_session",
             "init_service",
             "init_page",
+            "final_app",
             "final_page",
             "final_session",
             "action"

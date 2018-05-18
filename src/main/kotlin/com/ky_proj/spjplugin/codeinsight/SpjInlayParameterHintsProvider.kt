@@ -21,44 +21,47 @@ class SpjInlayParameterHintsProvider : InlayParameterHintsProvider {
     }
 
     override fun getParameterHints(element: PsiElement): List<InlayInfo> {
-        return if(TokenSet.create(SpjTypes.ARGUMENTS).contains(element.node.elementType)) {
+        return if (TokenSet.create(SpjTypes.ARGUMENTS).contains(element.node.elementType)) {
             getHintsOfArguments(element)
-        } else{
+        } else {
             emptyList()
         }
     }
-    override fun getDefaultBlackList() :Set<String> {
+
+    override fun getDefaultBlackList(): Set<String> {
         return setOf("")
     }
 
 
-    private fun getHintsOfArguments(arguments :PsiElement) :List<InlayInfo> {
+    private fun getHintsOfArguments(arguments: PsiElement): List<InlayInfo> {
         val result = ArrayList<InlayInfo>()
-        for(arg in getElementsForArgAsNode(arguments)){
+        for (arg in getElementsForArgAsNode(arguments)) {
             result.addAll(getHintsOfArg(arg, arguments))
         }
         return result
     }
 
 
-    private fun getHintsOfArg(node: ASTNode, arguments: PsiElement) :List<InlayInfo> {
+    private fun getHintsOfArg(node: ASTNode, arguments: PsiElement): List<InlayInfo> {
         // 呼び出し側のelement
-        if(arguments.node.elementType != SpjTypes.ARGUMENTS)
-        // argumentsじゃなかったら何もしない
+        if (arguments.node.elementType != SpjTypes.ARGUMENTS) {
+            // argumentsじゃなかったら何もしない
             return emptyList()
+        }
 
-        val caller    = arguments.parent ?: return emptyList()
+        val caller = arguments.parent ?: return emptyList()
         val callerNode = caller.node ?: return emptyList()
 
-        if(!TokenSet.create(SpjTypes.CALLING_PROCEDURE, SpjTypes.CALLING_FUNCTION, SpjTypes.CALLING_COMMAND).contains(callerNode.elementType) )
+        if (!TokenSet.create(SpjTypes.CALLING_PROCEDURE, SpjTypes.CALLING_FUNCTION, SpjTypes.CALLING_COMMAND).contains(callerNode.elementType)) {
             // hintsを出すのはプロシージャ、関数、コマンドの呼び出し時のみ
             return emptyList()
-
+        }
 
         // 定義元を探す。特定できなければ無視。
         val def = getDefinition(caller) ?: return emptyList()
-        if(def === caller)
+        if (def === caller) {
             return emptyList()
+        }
 
         val definedArguments = PsiTreeUtil.findChildOfType(def, SpjArguments::class.java) ?: return emptyList()
 
@@ -67,38 +70,41 @@ class SpjInlayParameterHintsProvider : InlayParameterHintsProvider {
 
         // 定義元の引数リスト
         val definedArgumentsList = getElementsForArgAsNode(definedArguments)
-        if(callerIndex == -1 || definedArgumentsList.size <= callerIndex) return emptyList()
+        if (callerIndex == -1 || definedArgumentsList.size <= callerIndex) {
+            return emptyList()
+        }
 
-        if(definedArgumentsList[callerIndex] != null){
+        if (definedArgumentsList[callerIndex] != null) {
             return listOf(InlayInfo(definedArgumentsList[callerIndex].text, node.startOffset))
         }
+
         return emptyList()
     }
 
-    private fun getTokenSetForArg() :TokenSet {
+    private fun getTokenSetForArg(): TokenSet {
         return TokenSet.create(SpjTypes.ARGS, SpjTypes.NUMBER, SpjTypes.CALLING_FUNCTION, SpjTypes.STRING)
     }
 
 
-    private fun getElementsForArgAsNode(arguments :PsiElement) :Array<ASTNode> {
+    private fun getElementsForArgAsNode(arguments: PsiElement): Array<ASTNode> {
         val result = ArrayList<ASTNode>()
 
         for (child in arguments.node.getChildren(getTokenSetForArg())) {
-            if(getTokenSetForArg().contains(child.elementType)){
+            if (getTokenSetForArg().contains(child.elementType)) {
                 result.add(child)
             }
         }
         return result.toTypedArray()
     }
 
-    private fun getDefinition(element :PsiElement) :PsiElement? {
-        return when(element.node.elementType) {
+    private fun getDefinition(element: PsiElement): PsiElement? {
+        return when (element.node.elementType) {
             SpjTypes.CALLING_PROCEDURE -> {
                 element.reference?.resolve()
             }
             SpjTypes.CALLING_FUNCTION -> {
                 val def = element.reference?.resolve()
-                if(def !== element){
+                if (def !== element) {
                     // 定義されたプロシージャ
                     def
                 } else {
