@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>com.ky-proj.spjplugin</id>
     <name>Spj Plugin</name>
-    <version>1.5.2</version>
+    <version>1.6.0</version>
     <vendor>Y.Kaneko</vendor>
 
     <description><![CDATA[
@@ -25,6 +25,12 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      (2018/08/14) v1.6.0:<br/><br/>
+
+      Folding are now available for blocks with if, for, and while.<br/>
+      Fixed some issues.<br/><br/>
+
+
       (2018/06/30) v1.5.2:<br/><br/>
 
       Improved handling for string literals.<br/>

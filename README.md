@@ -29,6 +29,7 @@ or download one from [JetBrain's website](https://plugins.jetbrains.com/plugin/8
 
 | Date | Version | Release Details|
 |:-------------:|:------:|:------------------------------|
+| 2018/08/14 | v1.6.0 | Folding are now available for blocks with if, for, and while..<br/> Fixed some issues.  |
 | 2018/06/30 | v1.5.2 | Improved handling for string literals.<br/> Fixed some issues.  |
 | 2018/03/11 | v1.5.1 | Fixed some issues.  |
 | 2018/02/11 | v1.5.0 | Improve auto completions. <br/> Add parameter hints. <br/> Whole project rewritten in Kotlin language. |
