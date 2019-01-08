@@ -13,6 +13,7 @@ import com.ky_proj.spjplugin.psi.*
 import com.ky_proj.spjplugin.setting.SpjSetting
 import com.ky_proj.spjplugin.util.SpjProcedureProvider
 import com.ky_proj.spjplugin.util.SpjTreeUtil
+import kotlinx.coroutines.runBlocking
 
 class SpjAnnotator : Annotator {
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
@@ -57,7 +58,9 @@ class SpjAnnotator : Annotator {
     private fun annotateProcedure(element: PsiElement, holder: AnnotationHolder) {
         val procedureName = element?.text ?: return
         val project = element.project
-        val defs = SpjProcedureProvider.findDefinitionInProject(project = project, name = procedureName, is_only_return = false)
+        val defs = runBlocking {
+            SpjProcedureProvider.findDefinitionInProject(project = project, name = procedureName, is_only_return = false)
+        }
         if (defs.size == 0) {
             // プロシージャが定義されていない
             holder.createErrorAnnotation(element, "Undefined Procedure")
@@ -129,7 +132,10 @@ class SpjAnnotator : Annotator {
         // 不正な文字を含んでいる
         utilAnnotateInvalidCharacter(element, holder)
 
-        val defs = SpjProcedureProvider.findDefinitionInProject(project = project, name = procedureName, is_only_return = false)
+        val defs = runBlocking {
+            SpjProcedureProvider.findDefinitionInProject(project = project, name = procedureName, is_only_return = false)
+        }
+
 
         if (! isEnhanceMode) {
             // エンハンスモードじゃいのにユーザー定義プロシージャを関数形式で呼んでいる

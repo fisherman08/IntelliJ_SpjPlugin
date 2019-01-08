@@ -31,17 +31,12 @@ class SpjLanguageCodeStyleSettingsProvider : LanguageCodeStyleSettingsProvider()
         }
     }
 
-    override fun getDefaultCommonSettings(): CommonCodeStyleSettings? {
-        val defaultSettings = CommonCodeStyleSettings(SpjLanguage.INSTANCE)
-
-        val indentOptions = defaultSettings.initIndentOptions()
-
+    override fun customizeDefaults(commonSettings: CommonCodeStyleSettings, indentOptions: CommonCodeStyleSettings.IndentOptions) {
+        super.customizeDefaults(commonSettings, indentOptions)
         indentOptions.USE_TAB_CHARACTER = false
         indentOptions.INDENT_SIZE = 4
         indentOptions.TAB_SIZE = 4
         indentOptions.CONTINUATION_INDENT_SIZE = 8
-
-        return defaultSettings
     }
 
     override fun getCodeSample(settingsType: LanguageCodeStyleSettingsProvider.SettingsType): String {

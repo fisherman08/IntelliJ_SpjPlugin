@@ -13,6 +13,7 @@ import com.ky_proj.spjplugin.setting.SpjSetting
 import java.util.ArrayList
 import java.util.regex.Pattern
 
+
 /**
  * Created by Y.Kaneko on 2017/03/19.
  */
@@ -47,8 +48,6 @@ class NeoPrjFileFinder(private val current_project: Project) {
             val tempResult = ArrayList<String>()
 
             for (virtualFile in virtualFiles) {
-                val file = PsiManager.getInstance(current_project).findFile(virtualFile) as NeoPrjFileFile? ?: continue
-
                 var filename = virtualFile.presentableUrl
                 filename = filename.replaceFirst(Pattern.quote(projectRoot).toRegex(), "")
                 filename = filename.substring(1)
@@ -59,6 +58,10 @@ class NeoPrjFileFinder(private val current_project: Project) {
             return tempResult.toTypedArray()
         }
 
+    /**
+     * 設定で保存されているprjファイルのパスから実際のファイルを探す。
+     * @param path 設定から渡される、prjファイルのパス
+     */
     fun getProjectFileFromPathString(path: String): NeoPrjFileFile? {
         var result: NeoPrjFileFile? = null
         val virtualFiles = allProjectFiles

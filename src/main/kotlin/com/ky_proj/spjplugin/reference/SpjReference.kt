@@ -6,6 +6,7 @@ import com.intellij.psi.*
 import com.ky_proj.spjplugin.psi.SpjFile
 import com.ky_proj.spjplugin.psi.SpjTypes
 import com.ky_proj.spjplugin.util.SpjProcedureProvider
+import kotlinx.coroutines.runBlocking
 
 import java.util.*
 
@@ -82,18 +83,20 @@ class SpjReference(element: PsiElement) : PsiReferenceBase<PsiElement>(element, 
         val file        = myElement.containingFile as SpjFile
         val results    = ArrayList<ResolveResult>()
 
+        runBlocking {
+            // まずは同じページの中で定義を探す
+            var defs = SpjProcedureProvider.findDefinitionInList(procedureName, SpjProcedureProvider.listInFile(file, false))
 
-        // まずは同じページの中で定義を探す
-        var defs = SpjProcedureProvider.findDefinitionInList(procedureName, SpjProcedureProvider.listInFile(file, false))
+            // もし同じページになかったらプロジェクト全体から探す
+            if (defs.size == 0) {
+                defs = SpjProcedureProvider.findDefinitionInList(procedureName, SpjProcedureProvider.listInProject(project, false))
+            }
 
-        // もし同じページになかったらプロジェクト全体から探す
-        if (defs.size == 0) {
-            defs = SpjProcedureProvider.findDefinitionInList(procedureName, SpjProcedureProvider.listInProject(project, false))
+            for (def in defs) {
+                results.add(PsiElementResolveResult(def))
+            }
         }
 
-        for (def in defs) {
-            results.add(PsiElementResolveResult(def))
-        }
         return results
     }
 
