@@ -8,6 +8,7 @@ import com.ky_proj.spjplugin.SpjTestCase
 import com.ky_proj.spjplugin.util.SpjCommandProvider
 import com.ky_proj.spjplugin.util.SpjFunctionProvider
 import com.ky_proj.spjplugin.util.SpjProcedureProvider
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Test
@@ -68,7 +69,7 @@ class CompletionTestCase :SpjTestCase(){
     }
 
     @Test
-    fun testSystemProceduresIgnored(){
+    fun testSystemProceduresIgnored() = runBlocking{
         myFixture.configureByFile("/procedure.system.spj")
         val definitions = SpjProcedureProvider.listInProject(myFixture.project, false)
         assertEquals(0, definitions.size)

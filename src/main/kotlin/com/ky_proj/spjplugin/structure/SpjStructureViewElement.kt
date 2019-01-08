@@ -22,6 +22,7 @@ import com.ky_proj.spjplugin.psi.SpjProcedureDef
 import com.ky_proj.spjplugin.psi.SpjTypes
 import com.ky_proj.spjplugin.util.SpjProcedureProvider
 import com.sun.istack.internal.Nullable
+import kotlinx.coroutines.runBlocking
 
 import java.util.ArrayList
 
@@ -92,12 +93,15 @@ class SpjStructureViewElement(private val element: PsiElement) : StructureViewTr
 
     override fun getChildren(): Array<TreeElement> {
         val treeElements = ArrayList<TreeElement>()
-        if (element is SpjFile) {
-            for (def in SpjProcedureProvider.listInFile(element, false)){
-                treeElements.add(SpjStructureViewElement(def))
-            }
+        runBlocking {
+            if (element is SpjFile) {
+                for (def in SpjProcedureProvider.listInFile(element, false)){
+                    treeElements.add(SpjStructureViewElement(def))
+                }
 
+            }
         }
+
         return treeElements.toTypedArray()
     }
 }

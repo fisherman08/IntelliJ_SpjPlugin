@@ -26,8 +26,8 @@ class SpjSettingForm(private val setting :SpjSetting) {
 
     fun setNeoVersion(setting: SpjSetting) {
         val itemCount = boxNeoVersion.getItemCount()
-        // 初期選択
 
+        // 初期選択
         val projectNeoVersion = setting.getNeoVersion()
         for (i in 0 until itemCount) {
             val ver = boxNeoVersion.getItemAt(i) as Float

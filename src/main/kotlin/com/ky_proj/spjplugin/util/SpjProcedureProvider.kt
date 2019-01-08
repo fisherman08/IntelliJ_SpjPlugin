@@ -10,6 +10,9 @@ import com.ky_proj.spjplugin.psi.SpjFile
 import com.ky_proj.spjplugin.psi.SpjProcedureBlock
 import com.ky_proj.spjplugin.psi.SpjProcedureDef
 import com.ky_proj.spjplugin.psi.SpjTypes
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.util.*
 
 
@@ -38,16 +41,21 @@ object SpjProcedureProvider {
      * @args is_only_return trueだとreturn句を含むプロシージャのみに限定
      * @return ArrayList<SpjProcedureDef>
      */
-    fun listInProject(project : Project, is_only_return : Boolean) :ArrayList<SpjProcedureDef>{
+    suspend fun listInProject(project : Project, is_only_return : Boolean) :ArrayList<SpjProcedureDef> = coroutineScope{
         val definitions = ArrayList<SpjProcedureDef>()
         val virtualFiles = FileTypeIndex.getFiles(SpjFileType.INSTANCE, GlobalSearchScope.allScope(project))
+        launch {
+            for (virtualFile in virtualFiles) {
+                val file = PsiManager.getInstance(project).findFile(virtualFile) as SpjFile? ?: continue
+                // ページごとに取得する
+                launch {
+                    definitions.addAll(listInFile(file, is_only_return))
+                }
 
-        for (virtualFile in virtualFiles) {
-            // ページごとに取得する
-            val file = PsiManager.getInstance(project).findFile(virtualFile) as SpjFile? ?: continue
-            definitions.addAll(listInFile(file, is_only_return))
-        }
-        return definitions
+            }
+        }.join()
+
+        definitions
     }
 
     fun listInFile(file: SpjFile, is_only_return : Boolean) :ArrayList<SpjProcedureDef>{
@@ -73,7 +81,7 @@ object SpjProcedureProvider {
         return definitions
     }
 
-    fun findDefinitionInProject(project :Project, name : String, is_only_return :Boolean) :ArrayList<SpjProcedureDef>{
+    suspend fun findDefinitionInProject(project :Project, name : String, is_only_return :Boolean) :ArrayList<SpjProcedureDef>{
         return findDefinitionInList(name, listInProject(project, is_only_return))
     }
 

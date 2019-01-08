@@ -17,6 +17,8 @@ import com.ky_proj.spjplugin.language.SpjLanguage
 import com.ky_proj.spjplugin.psi.*
 import com.ky_proj.spjplugin.setting.SpjSetting
 import com.ky_proj.spjplugin.util.*
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.runBlocking
 
 class SpjCompletionContributor : CompletionContributor() {
 
@@ -151,17 +153,18 @@ class SpjCompletionContributor : CompletionContributor() {
     /**
      * ユーザー定義プロシージャを追加する
      */
-    private fun addProcedures(type: IElementType, onlyWithReturn: Boolean) {
+    private fun addProcedures(type: IElementType, onlyWithReturn: Boolean){
+
         extend(CompletionType.BASIC,
                 PlatformPatterns.psiElement(type).withLanguage(SpjLanguage.INSTANCE),
                 object : CompletionProvider<CompletionParameters>() {
-                    public override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, resultSet: CompletionResultSet) {
+                    public override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, resultSet: CompletionResultSet)  = runBlocking {
                         val project = parameters.originalFile.project
                         val setting = SpjSetting(project)
 
                         if (!setting.isEnhanceMode() && type != SpjTypes.PROCEDURE_CALL)
                         // EnhanceModeじゃなければ関数形式の呼び出しには対応させない
-                            return
+                            coroutineContext.cancel()
 
                         val procedures = SpjProcedureProvider.listInProject(project, onlyWithReturn)
 
