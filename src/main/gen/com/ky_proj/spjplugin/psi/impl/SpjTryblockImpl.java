@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjTryblockImpl extends SpjNamedElementImpl implements SpjTryblock {
 
-  public SpjTryblockImpl(ASTNode node) {
+  public SpjTryblockImpl(@NotNull ASTNode node) {
     super(node);
   }
 

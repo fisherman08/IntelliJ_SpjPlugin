@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjCallingCommandImpl extends SpjNamedElementImpl implements SpjCallingCommand {
 
-  public SpjCallingCommandImpl(ASTNode node) {
+  public SpjCallingCommandImpl(@NotNull ASTNode node) {
     super(node);
   }
 

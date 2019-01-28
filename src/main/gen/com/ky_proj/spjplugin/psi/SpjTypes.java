@@ -38,6 +38,7 @@ public interface SpjTypes {
   IElementType CRLF = new SpjTokenType("CRLF");
   IElementType DOC_COMMENT = new SpjTokenType("DOC_COMMENT");
   IElementType DOC_COMMENT_TAG = new SpjTokenType("DOC_COMMENT_TAG");
+  IElementType DOC_COMMENT_TAG_DEPRECATED = new SpjTokenType("DOC_COMMENT_TAG_DEPRECATED");
   IElementType DOC_COMMENT_TEXT = new SpjTokenType("DOC_COMMENT_TEXT");
   IElementType DOC_COMMENT_VALUE = new SpjTokenType("DOC_COMMENT_VALUE");
   IElementType DUMMY = new SpjTokenType("DUMMY");
@@ -77,7 +78,7 @@ public interface SpjTypes {
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-       if (type == ARGS) {
+      if (type == ARGS) {
         return new SpjArgsImpl(node);
       }
       else if (type == ARGUMENTS) {

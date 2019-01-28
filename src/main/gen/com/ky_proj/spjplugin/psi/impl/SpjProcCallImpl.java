@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjProcCallImpl extends SpjNamedElementImpl implements SpjProcCall {
 
-  public SpjProcCallImpl(ASTNode node) {
+  public SpjProcCallImpl(@NotNull ASTNode node) {
     super(node);
   }
 

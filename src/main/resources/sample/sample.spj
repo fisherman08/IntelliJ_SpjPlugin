@@ -30,3 +30,10 @@ else then
         return()
     endfor
 endif
+
+
+[some:procedure]
+## @deprecated
+
+return("Deprecated this procedure is. And cause a warning it will.")
+

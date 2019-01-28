@@ -20,6 +20,7 @@ class SpjSyntaxHighlighter : SyntaxHighlighterBase() {
             SpjTypes.COMMENT           to COMMENT_KEYS,
             SpjTypes.DOC_COMMENT       to DOC_COMMENT_KEYS,
             SpjTypes.DOC_COMMENT_TAG   to DOC_COMMENT_TAG_KEYS,
+            SpjTypes.DOC_COMMENT_TAG_DEPRECATED   to DOC_COMMENT_TAG_DEPRECATED_KEYS,
             SpjTypes.DOC_COMMENT_VALUE to DOC_COMMENT_VALUE_KEYS,
             SpjTypes.DOC_COMMENT_TEXT  to DOC_COMMENT_TEXT_KEYS,
             SpjTypes.STRING            to STRING_KEYS,
@@ -94,6 +95,7 @@ class SpjSyntaxHighlighter : SyntaxHighlighterBase() {
         @JvmStatic val COMMENT = createTextAttributesKey("SPJ_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT)
         @JvmStatic val DOC_COMMENT = createTextAttributesKey("SPJ_DOC_COMMENT", DefaultLanguageHighlighterColors.DOC_COMMENT)
         @JvmStatic val DOC_COMMENT_TAG = createTextAttributesKey("SPJ_DOC_COMMENT_TAG", DefaultLanguageHighlighterColors.DOC_COMMENT_TAG)
+        @JvmStatic val DOC_COMMENT_TAG_DEPRECATED = createTextAttributesKey("SPJ_DOC_COMMENT_TAG_DEPRECATED", DefaultLanguageHighlighterColors.DOC_COMMENT_TAG)
         @JvmStatic val DOC_COMMENT_VALUE = createTextAttributesKey("SPJ_DOC_COMMENT_VALUE", DefaultLanguageHighlighterColors.DOC_COMMENT_TAG_VALUE)
         @JvmStatic val DOC_COMMENT_TEXT = createTextAttributesKey("SPJ_DOC_COMMENT_TEXT", DefaultLanguageHighlighterColors.DOC_COMMENT_MARKUP)
         @JvmStatic val BAD_CHARACTER = createTextAttributesKey("SPJ_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER)
@@ -105,6 +107,7 @@ class SpjSyntaxHighlighter : SyntaxHighlighterBase() {
         private val COMMENT_KEYS = arrayOf(COMMENT)
         private val DOC_COMMENT_KEYS = arrayOf(DOC_COMMENT)
         private val DOC_COMMENT_TAG_KEYS = arrayOf(DOC_COMMENT_TAG)
+        private val DOC_COMMENT_TAG_DEPRECATED_KEYS = arrayOf(DOC_COMMENT_TAG_DEPRECATED)
         private val DOC_COMMENT_VALUE_KEYS = arrayOf(DOC_COMMENT_VALUE)
         private val DOC_COMMENT_TEXT_KEYS = arrayOf(DOC_COMMENT_TEXT)
 

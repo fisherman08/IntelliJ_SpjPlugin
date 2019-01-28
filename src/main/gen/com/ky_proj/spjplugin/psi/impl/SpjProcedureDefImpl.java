@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjProcedureDefImpl extends SpjNamedElementImpl implements SpjProcedureDef {
 
-  public SpjProcedureDefImpl(ASTNode node) {
+  public SpjProcedureDefImpl(@NotNull ASTNode node) {
     super(node);
   }
 

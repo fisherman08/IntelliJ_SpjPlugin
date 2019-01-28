@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjArgumentsImpl extends SpjNamedElementImpl implements SpjArguments {
 
-  public SpjArgumentsImpl(ASTNode node) {
+  public SpjArgumentsImpl(@NotNull ASTNode node) {
     super(node);
   }
 

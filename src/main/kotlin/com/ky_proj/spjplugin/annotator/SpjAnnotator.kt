@@ -66,16 +66,23 @@ class SpjAnnotator : Annotator {
             holder.createErrorAnnotation(element, "Undefined Procedure")
         } else if (defs.size == 1) {
             val def = defs[0]
+
+
             val caller = PsiTreeUtil.getParentOfType(element, SpjCallingProcedure::class.java)
-            // 呼び出し元の引数の個数
             if (caller != null) {
+                // 呼び出し元の引数の個数
                 annotateArgumentsCount(element, holder, def, caller)
+                // @deprecatedなプロシージャを呼んでいる
+                annotateDeprecatedProcedure(definition = def, holder = holder, caller = caller)
             }
 
         }
     }
 
-    // 定義済みプロシージャ呼び出しの時に引数の個数を数える
+    /**
+     * 定義済みプロシージャ呼び出しの時に引数の個数を数える
+     *
+     * */
     private fun annotateArgumentsCount(element: PsiElement, holder: AnnotationHolder, def: SpjProcedureDef, caller: PsiElement) {
         val neoVersion = SpjSetting(element.project).getNeoVersion()
 
@@ -122,6 +129,15 @@ class SpjAnnotator : Annotator {
         }
     }
 
+    // プロシージャ非推奨
+    private fun annotateDeprecatedProcedure(definition: PsiElement, holder: AnnotationHolder, caller: PsiElement) {
+
+        val block = PsiTreeUtil.getParentOfType(definition, SpjProcedureBlock::class.java)
+        if (block != null && SpjTreeUtil.findChildByTokenType(block, TokenSet.create(SpjTypes.DOC_COMMENT_TAG_DEPRECATED)).isNotEmpty()) {
+            holder.createWarningAnnotation(caller, "This procedure is deprecated")
+        }
+    }
+
     // 関数呼び出し
     private fun annotateCallingFunction(element: PsiElement, holder: AnnotationHolder) {
         val procedureName = element?.text ?: return
@@ -154,8 +170,12 @@ class SpjAnnotator : Annotator {
             }
 
             // 引数の個数
-            val caller = PsiTreeUtil.getParentOfType(element, SpjCallingFunction::class.java) ?: return
-            annotateArgumentsCount(element, holder, def, caller)
+            val caller = PsiTreeUtil.getParentOfType(element, SpjCallingFunction::class.java)
+            if(caller != null){
+                annotateArgumentsCount(element, holder, def, caller)
+                // @deprecatedなプロシージャを呼んでいる
+                annotateDeprecatedProcedure(definition = def, holder = holder, caller = caller)
+            }
 
         }
 

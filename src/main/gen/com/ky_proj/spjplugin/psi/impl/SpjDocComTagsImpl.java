@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjDocComTagsImpl extends SpjNamedElementImpl implements SpjDocComTags {
 
-  public SpjDocComTagsImpl(ASTNode node) {
+  public SpjDocComTagsImpl(@NotNull ASTNode node) {
     super(node);
   }
 

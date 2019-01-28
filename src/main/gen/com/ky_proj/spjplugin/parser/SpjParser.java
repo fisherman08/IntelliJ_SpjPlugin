@@ -120,11 +120,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // ((inside_arguments)|(inside_condition))*
   private static boolean arguments_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "arguments_1")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!arguments_1_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "arguments_1", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -227,7 +226,6 @@ public class SpjParser implements PsiParser, LightPsiParser {
   static boolean common_item(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "common_item")) return false;
     boolean r;
-    Marker m = enter_section_(b);
     r = consumeToken(b, SEPARATOR);
     if (!r) r = consumeToken(b, COMMENT);
     if (!r) r = doc_comment_row(b, l + 1);
@@ -253,7 +251,6 @@ public class SpjParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, CRLF);
     if (!r) r = consumeToken(b, DUMMY);
     if (!r) r = consumeToken(b, BAD_CHARACTER);
-    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -278,11 +275,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
     boolean r;
     Marker m = enter_section_(b);
     r = condition_1_0(b, l + 1);
-    int c = current_position_(b);
     while (r) {
+      int c = current_position_(b);
       if (!condition_1_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "condition_1", c)) break;
-      c = current_position_(b);
     }
     exit_section_(b, m, null, r);
     return r;
@@ -299,14 +295,15 @@ public class SpjParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // DOC_COMMENT_TAG
+  // DOC_COMMENT_TAG|DOC_COMMENT_TAG_DEPRECATED
   public static boolean doc_com_tags(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "doc_com_tags")) return false;
-    if (!nextTokenIs(b, DOC_COMMENT_TAG)) return false;
+    if (!nextTokenIs(b, "<doc com tags>", DOC_COMMENT_TAG, DOC_COMMENT_TAG_DEPRECATED)) return false;
     boolean r;
-    Marker m = enter_section_(b);
+    Marker m = enter_section_(b, l, _NONE_, DOC_COM_TAGS, "<doc com tags>");
     r = consumeToken(b, DOC_COMMENT_TAG);
-    exit_section_(b, m, DOC_COM_TAGS, r);
+    if (!r) r = consumeToken(b, DOC_COMMENT_TAG_DEPRECATED);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
@@ -326,11 +323,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // (doc_com_tags|DOC_COMMENT_VALUE|DOC_COMMENT_TEXT)*
   private static boolean doc_comment_row_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "doc_comment_row_1")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!doc_comment_row_1_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "doc_comment_row_1", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -339,11 +335,9 @@ public class SpjParser implements PsiParser, LightPsiParser {
   private static boolean doc_comment_row_1_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "doc_comment_row_1_0")) return false;
     boolean r;
-    Marker m = enter_section_(b);
     r = doc_com_tags(b, l + 1);
     if (!r) r = consumeToken(b, DOC_COMMENT_VALUE);
     if (!r) r = consumeToken(b, DOC_COMMENT_TEXT);
-    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -375,11 +369,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
     boolean r;
     Marker m = enter_section_(b);
     r = elseifstate_3_0(b, l + 1);
-    int c = current_position_(b);
     while (r) {
+      int c = current_position_(b);
       if (!elseifstate_3_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "elseifstate_3", c)) break;
-      c = current_position_(b);
     }
     exit_section_(b, m, null, r);
     return r;
@@ -412,11 +405,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // (arguments)*
   private static boolean exceptblock_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "exceptblock_1")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!exceptblock_1_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "exceptblock_1", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -453,11 +445,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
     boolean r;
     Marker m = enter_section_(b);
     r = forblock_1_0(b, l + 1);
-    int c = current_position_(b);
     while (r) {
+      int c = current_position_(b);
       if (!forblock_1_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "forblock_1", c)) break;
-      c = current_position_(b);
     }
     exit_section_(b, m, null, r);
     return r;
@@ -476,11 +467,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // (inside_block)*
   private static boolean forblock_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "forblock_2")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!forblock_2_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "forblock_2", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -534,11 +524,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // inside_block*
   private static boolean ifblock_3(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ifblock_3")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!inside_block(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "ifblock_3", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -546,11 +535,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // ((elseifstate) inside_block* (ENDIF)* )*
   private static boolean ifblock_4(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ifblock_4")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!ifblock_4_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "ifblock_4", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -580,11 +568,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // inside_block*
   private static boolean ifblock_4_0_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ifblock_4_0_1")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!inside_block(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "ifblock_4_0_1", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -592,11 +579,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // (ENDIF)*
   private static boolean ifblock_4_0_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ifblock_4_0_2")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!consumeToken(b, ENDIF)) break;
       if (!empty_element_parsed_guard_(b, "ifblock_4_0_2", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -604,11 +590,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // (ELSE [THEN] inside_block*)*
   private static boolean ifblock_5(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ifblock_5")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!ifblock_5_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "ifblock_5", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -635,11 +620,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // inside_block*
   private static boolean ifblock_5_0_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ifblock_5_0_2")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!inside_block(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "ifblock_5_0_2", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -649,7 +633,6 @@ public class SpjParser implements PsiParser, LightPsiParser {
   static boolean inside_arguments(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "inside_arguments")) return false;
     boolean r;
-    Marker m = enter_section_(b);
     r = args(b, l + 1);
     if (!r) r = consumeToken(b, COMMENT);
     if (!r) r = consumeToken(b, STRING);
@@ -659,7 +642,6 @@ public class SpjParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BAD_CHARACTER);
     if (!r) r = calling_function(b, l + 1);
     if (!r) r = arguments(b, l + 1);
-    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -668,7 +650,6 @@ public class SpjParser implements PsiParser, LightPsiParser {
   static boolean inside_block(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "inside_block")) return false;
     boolean r;
-    Marker m = enter_section_(b);
     r = arguments(b, l + 1);
     if (!r) r = calling_function(b, l + 1);
     if (!r) r = condition(b, l + 1);
@@ -685,7 +666,6 @@ public class SpjParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, IF);
     if (!r) r = consumeToken(b, ELSEIF);
     if (!r) r = consumeToken(b, THEN);
-    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -725,10 +705,8 @@ public class SpjParser implements PsiParser, LightPsiParser {
   static boolean item_(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "item_")) return false;
     boolean r;
-    Marker m = enter_section_(b);
     r = procedure_block(b, l + 1);
     if (!r) r = item_p(b, l + 1);
-    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -738,7 +716,6 @@ public class SpjParser implements PsiParser, LightPsiParser {
   static boolean item_p(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "item_p")) return false;
     boolean r;
-    Marker m = enter_section_(b);
     r = arguments(b, l + 1);
     if (!r) r = calling_function(b, l + 1);
     if (!r) r = condition(b, l + 1);
@@ -768,7 +745,6 @@ public class SpjParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, EXCEPT);
     if (!r) r = consumeToken(b, FINALLY);
     if (!r) r = consumeToken(b, ENDTRY);
-    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -801,11 +777,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // (item_p)*
   private static boolean procedure_block_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "procedure_block_1")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!procedure_block_1_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "procedure_block_1", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -837,11 +812,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // (arguments)*
   private static boolean procedure_def_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "procedure_def_2")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!procedure_def_2_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "procedure_def_2", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -860,11 +834,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // item_*
   static boolean spjFile(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "spjFile")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!item_(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "spjFile", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -891,11 +864,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // (inside_block)*
   private static boolean tryblock_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "tryblock_1")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!tryblock_1_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "tryblock_1", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -913,11 +885,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // (exceptblock)*
   private static boolean tryblock_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "tryblock_2")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!tryblock_2_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "tryblock_2", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -935,11 +906,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // (inside_block)*
   private static boolean tryblock_3(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "tryblock_3")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!tryblock_3_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "tryblock_3", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -964,11 +934,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // (inside_block)*
   private static boolean tryblock_5(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "tryblock_5")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!tryblock_5_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "tryblock_5", c)) break;
-      c = current_position_(b);
     }
     return true;
   }
@@ -1017,11 +986,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
     boolean r;
     Marker m = enter_section_(b);
     r = whileblock_1_0(b, l + 1);
-    int c = current_position_(b);
     while (r) {
+      int c = current_position_(b);
       if (!whileblock_1_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "whileblock_1", c)) break;
-      c = current_position_(b);
     }
     exit_section_(b, m, null, r);
     return r;
@@ -1040,11 +1008,10 @@ public class SpjParser implements PsiParser, LightPsiParser {
   // (inside_block)*
   private static boolean whileblock_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "whileblock_2")) return false;
-    int c = current_position_(b);
     while (true) {
+      int c = current_position_(b);
       if (!whileblock_2_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "whileblock_2", c)) break;
-      c = current_position_(b);
     }
     return true;
   }

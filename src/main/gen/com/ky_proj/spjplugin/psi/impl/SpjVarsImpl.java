@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjVarsImpl extends SpjNamedElementImpl implements SpjVars {
 
-  public SpjVarsImpl(ASTNode node) {
+  public SpjVarsImpl(@NotNull ASTNode node) {
     super(node);
   }
 
