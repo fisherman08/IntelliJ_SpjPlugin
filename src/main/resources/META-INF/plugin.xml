@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>com.ky-proj.spjplugin</id>
     <name>Spj Plugin</name>
-    <version>1.6.0</version>
+    <version>1.7.0</version>
     <vendor>Y.Kaneko</vendor>
 
     <description><![CDATA[
@@ -25,6 +25,14 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      (2019/01/28) v1.7.0:<br/><br/>
+
+      Support '@deprecated' tag in SpjDocs.<br/>
+      Add new functions.<br/>
+      Performance improved.<br/>
+      Fixed some issues.<br/><br/>
+
+
       (2018/08/14) v1.6.0:<br/><br/>
 
       Folding are now available for blocks with if, for, and while.<br/>
