@@ -43,9 +43,10 @@ class BasicTestCase :SpjParserTestCase(){
 
         assertEquals(2, getSizeOfTypesInBaseFile(TokenSet.create(SpjTypes.COMMENT)))
 
-        assertEquals(3, getSizeOfTypesInBaseFile(TokenSet.create(SpjTypes.DOC_COMMENT_ROW)))
-        assertEquals(3, getSizeOfTypesInBaseFile(TokenSet.create(SpjTypes.DOC_COMMENT)))
+        assertEquals(4, getSizeOfTypesInBaseFile(TokenSet.create(SpjTypes.DOC_COMMENT_ROW)))
+        assertEquals(4, getSizeOfTypesInBaseFile(TokenSet.create(SpjTypes.DOC_COMMENT)))
         assertEquals(2, getSizeOfTypesInBaseFile(TokenSet.create(SpjTypes.DOC_COMMENT_TAG)))
+        assertEquals(1, getSizeOfTypesInBaseFile(TokenSet.create(SpjTypes.DOC_COMMENT_TAG_DEPRECATED)))
         assertEquals(1, getSizeOfTypesInBaseFile(TokenSet.create(SpjTypes.DOC_COMMENT_VALUE)))
     }
 

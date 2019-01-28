@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjDocCommentRowImpl extends SpjNamedElementImpl implements SpjDocCommentRow {
 
-  public SpjDocCommentRowImpl(ASTNode node) {
+  public SpjDocCommentRowImpl(@NotNull ASTNode node) {
     super(node);
   }
 

@@ -100,4 +100,12 @@ class CompletionTestCase :SpjTestCase(){
         assertTrue(strings?.contains("@param arg1 ") ?: false)
         assertTrue(strings?.contains("@param arg2 ") ?: false)
     }
+
+    @Test
+    fun testSpjDocDeprecated() {
+        myFixture.configureByFile("/spjdoc_deprecated.spj")
+        myFixture.complete(CompletionType.BASIC, 1)
+        val file_content = myFixture.file?.text ?: ""
+        assertTrue(file_content.contains("@deprecated ") ?: false)
+    }
 }

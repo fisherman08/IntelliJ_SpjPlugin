@@ -12,6 +12,7 @@ array.make() # comment after some expressions
 [init:start(id_in, number_in)]
 ## @example perform init:start($id)
 ## @param id_in ID passed as an argument
+## @deprecated
 
 local(var1, var2)
 

@@ -56,6 +56,9 @@ class SpjCompletionContributor : CompletionContributor() {
                         val procedureDefinition = PsiTreeUtil.getParentOfType(element, SpjProcedureBlock::class.java)?.node?.findChildByType(SpjTypes.PROCEDURE_DEF)
                                 ?: return
 
+                        // @deprecated
+                        resultSet.addElement(LookupElementBuilder.create("@deprecated "))
+
                         // @example
                         val procedureName = procedureDefinition.findChildByType(SpjTypes.PROCEDURE)?.text ?: return
                         val arguments: ASTNode? = procedureDefinition.findChildByType(SpjTypes.ARGUMENTS)

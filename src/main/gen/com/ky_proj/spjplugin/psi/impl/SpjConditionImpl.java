@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjConditionImpl extends SpjNamedElementImpl implements SpjCondition {
 
-  public SpjConditionImpl(ASTNode node) {
+  public SpjConditionImpl(@NotNull ASTNode node) {
     super(node);
   }
 

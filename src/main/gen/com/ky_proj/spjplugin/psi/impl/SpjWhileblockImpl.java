@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjWhileblockImpl extends SpjNamedElementImpl implements SpjWhileblock {
 
-  public SpjWhileblockImpl(ASTNode node) {
+  public SpjWhileblockImpl(@NotNull ASTNode node) {
     super(node);
   }
 

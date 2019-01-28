@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjProcedureBlockImpl extends SpjNamedElementImpl implements SpjProcedureBlock {
 
-  public SpjProcedureBlockImpl(ASTNode node) {
+  public SpjProcedureBlockImpl(@NotNull ASTNode node) {
     super(node);
   }
 

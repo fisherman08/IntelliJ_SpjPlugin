@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjElseifstateImpl extends SpjNamedElementImpl implements SpjElseifstate {
 
-  public SpjElseifstateImpl(ASTNode node) {
+  public SpjElseifstateImpl(@NotNull ASTNode node) {
     super(node);
   }
 

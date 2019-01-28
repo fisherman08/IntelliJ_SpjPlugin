@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjExceptblockImpl extends SpjNamedElementImpl implements SpjExceptblock {
 
-  public SpjExceptblockImpl(ASTNode node) {
+  public SpjExceptblockImpl(@NotNull ASTNode node) {
     super(node);
   }
 

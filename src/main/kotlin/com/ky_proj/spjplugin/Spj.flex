@@ -92,6 +92,7 @@ PROCEDURE_CALL=[^\ \t\f=\r\n()]+
 START_OF_DOC_COMMENT=("##")
 DOC_COMMENT_TAG=("@")[^\ \t\f\r\n]*
 DOC_COMMENT_TAG_EXAMPLE=("@example")
+DOC_COMMENT_TAG_DEPRECATED=("@deprecated")
 DOC_COMMENT_TEXT=[^\ \t\f\r\n]
 
 END_OF_LINE_COMMENT=("#")[^#\r\n]*
@@ -128,6 +129,7 @@ END_OF_LINE_COMMENT=("#")[^#\r\n]*
 <YYINITIAL> {START_OF_DOC_COMMENT}                          { yypushstate(INSIDE_DOC_COMMENT); return SpjTypes.DOC_COMMENT; }
 <INSIDE_DOC_COMMENT>{WHITE_SPACE}+                          { yybegin(INSIDE_DOC_COMMENT); return TokenType.WHITE_SPACE; }
 <INSIDE_DOC_COMMENT> {DOC_COMMENT_TAG_EXAMPLE}              { yybegin(INSIDE_DOC_COMMENT); return SpjTypes.DOC_COMMENT_TAG; }
+<INSIDE_DOC_COMMENT> {DOC_COMMENT_TAG_DEPRECATED}              { yybegin(INSIDE_DOC_COMMENT); return SpjTypes.DOC_COMMENT_TAG_DEPRECATED; }
 <INSIDE_DOC_COMMENT> {DOC_COMMENT_TAG}                      { yybegin(INSIDE_DOC_COMMENT_PARAM); return SpjTypes.DOC_COMMENT_TAG; }
 <INSIDE_DOC_COMMENT> {DOC_COMMENT_TEXT}+                    { yybegin(INSIDE_DOC_COMMENT); return SpjTypes.DOC_COMMENT_TEXT; }
 <INSIDE_DOC_COMMENT> {CRLF}+                                { yybegin(YYINITIAL); return TokenType.WHITE_SPACE;}

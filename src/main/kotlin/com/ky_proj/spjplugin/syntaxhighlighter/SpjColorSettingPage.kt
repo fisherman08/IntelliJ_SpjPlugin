@@ -56,6 +56,7 @@ class SpjColorSettingsPage : ColorSettingsPage {
                 AttributesDescriptor("SpjDoc Tag", SpjSyntaxHighlighter.DOC_COMMENT_TAG),
                 AttributesDescriptor("SpjDoc Value", SpjSyntaxHighlighter.DOC_COMMENT_VALUE),
                 AttributesDescriptor("SpjDoc CommentText", SpjSyntaxHighlighter.DOC_COMMENT_TEXT),
+                AttributesDescriptor("SpjDoc @deprecated Tag", SpjSyntaxHighlighter.DOC_COMMENT_TAG_DEPRECATED),
                 AttributesDescriptor("Variable", SpjSyntaxHighlighter.VARIABLE),
                 AttributesDescriptor("Argument", SpjSyntaxHighlighter.ARGUMENT),
                 AttributesDescriptor("Operation sign", SpjSyntaxHighlighter.OPER),

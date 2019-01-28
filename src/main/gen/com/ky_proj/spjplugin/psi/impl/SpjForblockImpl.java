@@ -12,7 +12,7 @@ import com.ky_proj.spjplugin.psi.*;
 
 public class SpjForblockImpl extends SpjNamedElementImpl implements SpjForblock {
 
-  public SpjForblockImpl(ASTNode node) {
+  public SpjForblockImpl(@NotNull ASTNode node) {
     super(node);
   }
 

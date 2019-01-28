@@ -53,7 +53,7 @@ proc_call ::= PROCEDURE_CALL {pin=0}
 com_call ::= COMMAND_CALL {pin=0}
 vars ::= VARIABLE {pin=0}
 args  ::= ARGUMENT {pin=0}
-doc_com_tags ::= DOC_COMMENT_TAG{pin=0}
+doc_com_tags ::= (DOC_COMMENT_TAG|DOC_COMMENT_TAG_DEPRECATED){pin=0}
 
 ifblock ::= IF [THEN] (condition) inside_block* ((elseifstate) inside_block* (ENDIF)* )* (ELSE [THEN] inside_block*)* ENDIF {pin=1}
 
