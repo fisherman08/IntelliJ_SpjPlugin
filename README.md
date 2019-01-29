@@ -5,7 +5,7 @@ A Plugin For IntelliJ Family IDEs to Develop 101NEO SPJ Language
 
 [![Build Status](https://travis-ci.org/fisherman08/IntelliJ_SpjPlugin.svg?branch=master)](https://travis-ci.org/fisherman08/IntelliJ_SpjPlugin)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/fisherman08/IntelliJ_SpjPlugin/blob/master/LICENSE)
-![version](https://img.shields.io/badge/Version-1.7.0-red.svg)
+![version](https://img.shields.io/badge/Version-1.7.1-red.svg)
 
 ## About
 
@@ -29,6 +29,7 @@ or download one from [JetBrain's website](https://plugins.jetbrains.com/plugin/8
 
 | Date | Version | Release Details|
 |:-------------:|:------:|:------------------------------|
+| 2019/01/28 | v1.7.1 | Rename refactoring for procedures is now working. |
 | 2019/01/28 | v1.7.0 | Support '@deprecated' tag in SpjDocs.<br/>Add new functions.<br/>Performance improved.<br/>Fixed some issues. |
 | 2018/08/14 | v1.6.0 | Folding are now available for blocks with if, for, and while..<br/> Fixed some issues.  |
 | 2018/06/30 | v1.5.2 | Improved handling for string literals.<br/> Fixed some issues.  |

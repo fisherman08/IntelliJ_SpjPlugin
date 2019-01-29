@@ -27,7 +27,7 @@ apply plugin: 'kotlin'
 
 sourceCompatibility = 1.8
 group 'com.ky-proj.spjplugin'
-version '1.7.0'
+version '1.7.1'
 
 repositories {
     mavenCentral()
