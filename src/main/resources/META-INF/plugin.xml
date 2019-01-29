@@ -105,6 +105,8 @@
 
         <lang.foldingBuilder language="spj" implementationClass="com.ky_proj.spjplugin.folding.SpjFoldingBuilder"/>
 
+        <lang.namesValidator language="spj" implementationClass="com.ky_proj.spjplugin.language.SpjNamesValidator"/>
+
         <!--live template-->
         <defaultLiveTemplatesProvider implementation="com.ky_proj.spjplugin.template.SpjTemplateProvider"/>
         <liveTemplateContext implementation="com.ky_proj.spjplugin.template.SpjTemplateContextType"/>

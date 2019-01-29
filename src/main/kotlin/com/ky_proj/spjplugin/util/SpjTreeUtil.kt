@@ -36,6 +36,11 @@ object SpjTreeUtil {
         return result
     }
 
+    fun findChildByTokenType(element: PsiElement?, type: IElementType): List<ASTNode> {
+
+        return SpjTreeUtil.findChildByTokenType(element = element, tokenset = TokenSet.create(type))
+    }
+
 
     fun findChildrenOfAllTypes(element: PsiElement?): List<ASTNode>{
         val result = ArrayList<ASTNode>()

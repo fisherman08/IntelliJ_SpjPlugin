@@ -9,6 +9,7 @@ import com.intellij.lang.annotation.Annotator
 import com.intellij.psi.PsiElement
 import com.intellij.psi.tree.TokenSet
 import com.intellij.psi.util.PsiTreeUtil
+import com.ky_proj.spjplugin.language.SpjNamesValidator
 import com.ky_proj.spjplugin.psi.*
 import com.ky_proj.spjplugin.setting.SpjSetting
 import com.ky_proj.spjplugin.util.SpjProcedureProvider
@@ -265,7 +266,7 @@ class SpjAnnotator : Annotator {
 
 
         // NEO4以上でセミコロンが入っていたらアウト
-        val invalid_characters = arrayOf(";", "+", "-", "*", "/", "=", "%")
+        val invalid_characters = SpjNamesValidator.invalid_characters
         for (character in invalid_characters) {
             if (name.contains(character)) {
                 holder.createErrorAnnotation(element, "Invalid Character '$character' included")
