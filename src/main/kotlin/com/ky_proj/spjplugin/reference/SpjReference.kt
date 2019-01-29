@@ -4,8 +4,10 @@ import com.intellij.util.IncorrectOperationException
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.*
 import com.ky_proj.spjplugin.psi.SpjFile
+import com.ky_proj.spjplugin.psi.SpjPsiUtil
 import com.ky_proj.spjplugin.psi.SpjTypes
 import com.ky_proj.spjplugin.util.SpjProcedureProvider
+import com.ky_proj.spjplugin.util.SpjTreeUtil
 import kotlinx.coroutines.runBlocking
 
 import java.util.*
@@ -112,6 +114,26 @@ class SpjReference(element: PsiElement) : PsiReferenceBase<PsiElement>(element, 
 
     @Throws(IncorrectOperationException::class)
     override fun handleElementRename(newElementName: String): PsiElement {
+
+        val myType = myElement.node.elementType;
+        if(myType == SpjTypes.CALLING_PROCEDURE){
+            val old_proc_call = SpjTreeUtil.findChildByTokenType(myElement, SpjTypes.PROC_CALL) ?: return myElement
+            val new_proc_call = SpjPsiUtil.createSpjElement(project = myElement.project, content = newElementName, type = SpjTypes.PROC_CALL)
+
+            if(old_proc_call.isNotEmpty() && new_proc_call != null){
+                myElement.node.replaceChild(old_proc_call.first(), new_proc_call.node)
+            }
+        }
+
+        if(myType == SpjTypes.CALLING_FUNCTION){
+            val old_function = SpjTreeUtil.findChildByTokenType(myElement, SpjTypes.FUNCTION) ?: return myElement
+
+            val new_function = SpjPsiUtil.createSpjElement(project = myElement.project, content = newElementName, type = SpjTypes.FUNCTION)
+
+            if(old_function.isNotEmpty() && new_function != null){
+                myElement.node.replaceChild(old_function.first(), new_function.node)
+            }
+        }
 
         return myElement
     }
