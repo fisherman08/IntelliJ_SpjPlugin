@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>com.ky-proj.spjplugin</id>
     <name>Spj Plugin</name>
-    <version>1.7.0</version>
+    <version>1.7.1</version>
     <vendor>Y.Kaneko</vendor>
 
     <description><![CDATA[
@@ -25,6 +25,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      (2019/01/29) v1.7.1:<br/><br/>
+
+      Rename refactoring for procedures is now working.<br/><br/>
+
       (2019/01/28) v1.7.0:<br/><br/>
 
       Support '@deprecated' tag in SpjDocs.<br/>
