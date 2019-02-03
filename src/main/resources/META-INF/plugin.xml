@@ -86,6 +86,7 @@
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/SpjDarcula.xml"/>
 
         <codeInsight.parameterNameHints language="spj" implementationClass="com.ky_proj.spjplugin.codeinsight.SpjInlayParameterHintsProvider" />
+        <lang.implementationTextSelectioner language="spj" implementationClass="com.ky_proj.spjplugin.codeinsight.hint.SpjImplementationTextSelectioner" />
 
         <lang.braceMatcher language="spj" implementationClass="com.ky_proj.spjplugin.completion.SpjBraceMatcher"/>
         <lang.quoteHandler language="spj" implementationClass="com.ky_proj.spjplugin.codeinsight.SpjQuoteHandler"/>
