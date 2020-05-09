@@ -2,6 +2,7 @@ package com.ky_proj.spjplugin.setting
 
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.ui.layout.panel
+import com.intellij.util.ui.UIUtil
 import com.ky_proj.spjplugin.NeoPrjFile.util.NeoPrjFileFinder
 import javax.swing.JPanel
 
@@ -71,11 +72,11 @@ class SpjSettingForm(private val setting :SpjSetting) {
         return panel {
             row {
                 // child components
-                label("Project NEO Version", 10, bold = true)
+                label("Project NEO Version", UIUtil.ComponentStyle.REGULAR, bold = true)
                 boxNeoVersion()
             }
             row {
-                label("Project NEO .prj File", 10, bold = true)
+                label("Project NEO .prj File", UIUtil.ComponentStyle.REGULAR, bold = true)
                 boxNeoPrjFiles()
             }
         }

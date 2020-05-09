@@ -19,7 +19,7 @@ class FindUsageTestCase : SpjTestCase(){
 
     @Test
     fun testFindUsage(){
-        val usageInfos = myFixture.testFindUsages(testDataPath + "/def.spj", testDataPath + "/usage.spj")
+        val usageInfos = myFixture.testFindUsages("def.spj", "usage.spj")
         UsefulTestCase.assertNotEmpty(usageInfos)
     }
 }
