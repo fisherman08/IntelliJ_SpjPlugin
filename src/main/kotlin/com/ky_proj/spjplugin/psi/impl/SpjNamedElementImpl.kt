@@ -3,16 +3,12 @@ package com.ky_proj.spjplugin.psi.impl
 import com.intellij.extapi.psi.ASTWrapperPsiElement
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiElementFactory
 import com.intellij.psi.PsiNamedElement
-import com.intellij.psi.impl.PsiElementFactoryImpl
 import com.intellij.util.IncorrectOperationException
 import com.intellij.psi.tree.IElementType
 import com.ky_proj.spjplugin.psi.SpjPsiUtil
-import com.ky_proj.spjplugin.psi.SpjTokenType
 import com.ky_proj.spjplugin.psi.SpjTypes
 import com.ky_proj.spjplugin.reference.SpjReference
-import org.jetbrains.java.generate.element.ElementFactory
 
 open class SpjNamedElementImpl(node: ASTNode) : ASTWrapperPsiElement(node), PsiNamedElement {
     private var myRef: SpjReference? = null

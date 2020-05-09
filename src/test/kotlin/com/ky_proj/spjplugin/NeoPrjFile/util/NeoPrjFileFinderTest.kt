@@ -10,7 +10,7 @@ class NeoPrjFileFinderTest :SpjTestCase() {
 
     @Test
     fun testExistingPrjFile(){
-        myFixture.configureByFile("${testDataPath}/propertyfinder.prj")
+        myFixture.configureByFile("propertyfinder.prj")
         val prjFiles = NeoPrjFileFinder(myFixture.project).allProjectFileNamesFromProjectRoot
         assertEquals(1, prjFiles.size)
     }
