@@ -2,7 +2,7 @@
 ![logo](https://github.com/fisherman08/IntelliJ_SpjPlugin/blob/media/logo.png)
 
 A Plugin For IntelliJ Family IDEs to Develop 101NEO SPJ Language
-![Build Status](https://github.com/fisherman08/IntelliJ_SpjPlugin/actions/workflows/ci-develop/badge.svg?branch=master)
+![Build Status](https://github.com/fisherman08/IntelliJ_SpjPlugin/actions/workflows/ci-develop.yml/badge.svg?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/fisherman08/IntelliJ_SpjPlugin/blob/master/LICENSE)
 ![version](https://img.shields.io/badge/Version-1.9.0-red.svg)
 
