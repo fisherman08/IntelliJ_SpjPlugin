@@ -3,14 +3,10 @@ package com.ky_proj.spjplugin.parser
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
-import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.TokenSet
 import com.ky_proj.spjplugin.SpjTestCase
-import com.ky_proj.spjplugin.psi.SpjTypes
 import com.ky_proj.spjplugin.util.SpjTreeUtil
-import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.HeaderTokenizer
 import org.junit.Before
-import org.junit.Test
 
 abstract class SpjParserTestCase :SpjTestCase(){
 

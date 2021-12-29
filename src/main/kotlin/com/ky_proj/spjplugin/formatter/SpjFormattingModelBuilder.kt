@@ -3,7 +3,7 @@ package com.ky_proj.spjplugin.formatter
 import com.intellij.formatting.*
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.util.TextRange
-import com.intellij.psi.PsiElement
+
 import com.intellij.psi.PsiFile
 import com.intellij.psi.codeStyle.CodeStyleSettings
 import com.intellij.psi.codeStyle.CommonCodeStyleSettings
@@ -13,14 +13,16 @@ import com.ky_proj.spjplugin.language.SpjLanguage
 import com.ky_proj.spjplugin.psi.SpjTypes.*
 
 class SpjFormattingModelBuilder : FormattingModelBuilder {
-    override fun createModel(element: PsiElement, settings: CodeStyleSettings): FormattingModel {
-        val commonSettings = settings.getCommonSettings(SpjLanguage.INSTANCE)
+
+    override fun createModel(formattingContext: FormattingContext): FormattingModel {
+        val commonSettings = formattingContext.codeStyleSettings.getCommonSettings(SpjLanguage.INSTANCE)
         val spacingBuilder = createSpacingBuilder(commonSettings)
 
-        val block = SpjBlock(element.node, Wrap.createWrap(WrapType.NORMAL, false), Alignment.createAlignment(), spacingBuilder)
+        val block = SpjBlock(formattingContext.psiElement.node, Wrap.createWrap(WrapType.NORMAL, false), Alignment.createAlignment(), spacingBuilder)
 
-        return FormattingModelProvider.createFormattingModelForPsiFile(element.containingFile, block, settings)
+        return FormattingModelProvider.createFormattingModelForPsiFile(formattingContext.psiElement.containingFile, block, formattingContext.codeStyleSettings)
     }
+
 
     private fun createSpacingBuilder(settings: CommonCodeStyleSettings): SpacingBuilder {
 

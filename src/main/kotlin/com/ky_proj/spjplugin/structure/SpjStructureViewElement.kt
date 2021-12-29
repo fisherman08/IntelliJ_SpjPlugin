@@ -21,7 +21,6 @@ import com.ky_proj.spjplugin.psi.SpjFile
 import com.ky_proj.spjplugin.psi.SpjProcedureDef
 import com.ky_proj.spjplugin.psi.SpjTypes
 import com.ky_proj.spjplugin.util.SpjProcedureProvider
-import com.sun.istack.internal.Nullable
 import kotlinx.coroutines.runBlocking
 
 import java.util.ArrayList
@@ -57,7 +56,6 @@ class SpjStructureViewElement(private val element: PsiElement) : StructureViewTr
     override fun getPresentation(): ItemPresentation {
 
         return object : ColoredItemPresentation {
-            @Nullable
             override fun getTextAttributesKey(): TextAttributesKey? {
                 return null
             }
